@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
                 Vector3 forward = transform.TransformDirection(Vector3.forward);
                 Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 2))
+                if (Physics.Raycast(ray, out hit, 2.5f))
                 {
                     if (hit.collider.CompareTag("Box"))
                     {
