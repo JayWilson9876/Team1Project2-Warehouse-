@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * 2, Color.red);
         if (Input.GetMouseButtonDown(0))
         {
             if (holdingObject == false)
