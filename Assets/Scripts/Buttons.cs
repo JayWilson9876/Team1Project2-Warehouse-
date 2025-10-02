@@ -13,8 +13,18 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("Help Menu");
     }
 
+    public void CreditsButton()
+    {
+        SceneManager.LoadScene("Credits Menu");
+    }
+
     public void QuitButton()
     {
         Application.Quit();
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 }
