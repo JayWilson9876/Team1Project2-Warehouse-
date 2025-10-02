@@ -1,5 +1,6 @@
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     float timeMinutes = 0;
     float timeHours = 0;
     bool clockedIn = false;
+    bool done = false;
 
     void Start()
     {
@@ -36,12 +38,12 @@ public class Player : MonoBehaviour
             else if (hit.collider.CompareTag("Time Clock"))
             {
                 canInteract = true;
-                if (!clockedIn)
+                if (!clockedIn && !done)
                 {
                     interactText.text = "Clock In";
                     interactText.enabled = true;
                 }
-                else
+                else if (clockedIn && !done)
                 {
                     interactText.text = "Clock Out";
                     interactText.enabled = true;
@@ -76,6 +78,7 @@ public class Player : MonoBehaviour
                             else
                             {
                                 clockedIn = false;
+                                done = true;
                             }
                         }
                     }
@@ -87,5 +90,58 @@ public class Player : MonoBehaviour
                 holdingObject = false;
             }
         }
+
+        if (clockedIn)
+        {
+            timeSeconds += Time.deltaTime;
+            if (timeSeconds >= 60)
+            {
+                timeMinutes += 1;
+                timeSeconds = 0;
+                if (timeMinutes >= 60)
+                {
+                    timeHours += 1;
+                    timeMinutes = 0;
+                }
+            }
+        }
+
+        timerText.text = Timer();
+    }
+
+    string Timer()
+    {
+        string secondsString;
+        string minutesString;
+        string hoursString;
+
+        if (timeSeconds < 10)
+        {
+            secondsString = $"0{Mathf.RoundToInt(timeSeconds)}";
+        }
+        else
+        {
+            secondsString = timeSeconds.ToString();
+        }
+
+        if (timeMinutes < 10)
+        {
+            minutesString = $"0{Mathf.RoundToInt(timeMinutes)}";
+        }
+        else
+        {
+            minutesString = timeMinutes.ToString();
+        }
+
+        if (timeHours < 10)
+        {
+            hoursString = $"0{Mathf.RoundToInt(timeHours)}";
+        }
+        else
+        {
+            hoursString = timeHours.ToString();
+        }
+
+        return $"{hoursString}:{minutesString}:{secondsString}";
     }
 }
