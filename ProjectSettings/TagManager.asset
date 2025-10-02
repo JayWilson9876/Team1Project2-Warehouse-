@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Box
   - Time Clock
+  - Tank
   layers:
   - Default
   - TransparentFX
