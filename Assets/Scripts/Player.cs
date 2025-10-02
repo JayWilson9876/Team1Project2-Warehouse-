@@ -37,14 +37,15 @@ public class Player : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Time Clock"))
             {
-                canInteract = true;
                 if (!clockedIn && !done)
                 {
+                    canInteract = true;
                     interactText.text = "Clock In";
                     interactText.enabled = true;
                 }
                 else if (clockedIn && !done)
                 {
+                    canInteract = true;
                     interactText.text = "Clock Out";
                     interactText.enabled = true;
                 }
