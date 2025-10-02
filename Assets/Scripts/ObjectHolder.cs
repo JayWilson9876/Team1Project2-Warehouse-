@@ -20,10 +20,11 @@ public class ObjectHolder : MonoBehaviour
         box.transform.SetParent(parent);
         currentBox = box;
         currentRigidBody = currentBox.GetComponent<Rigidbody>();
+        currentBox.GetComponent<BoxCollider>().enabled = false;
         currentRigidBody.isKinematic = true;
         currentBox.transform.localPosition = Vector3.zero;
         currentBox.transform.eulerAngles = new Vector3(0, 0, 0);
-        currentBox.GetComponent<BoxCollider>().enabled = false;
+        
     }
 
     public void DropBox()

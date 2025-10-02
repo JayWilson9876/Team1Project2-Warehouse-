@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
             if (hit.collider.CompareTag("Box"))
             {
                 canInteract = true;
-                interactText.text = "Pickup Box";
+                interactText.text = "Pick up";
                 interactText.enabled = true;
             }
             else if (hit.collider.CompareTag("Time Clock"))
