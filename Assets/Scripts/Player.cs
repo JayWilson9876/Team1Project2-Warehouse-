@@ -121,7 +121,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            secondsString = timeSeconds.ToString();
+            secondsString = Mathf.RoundToInt(timeSeconds).ToString();
         }
 
         if (timeMinutes < 10)
@@ -130,7 +130,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            minutesString = timeMinutes.ToString();
+            minutesString = Mathf.RoundToInt(timeMinutes).ToString();
         }
 
         if (timeHours < 10)
@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            hoursString = timeHours.ToString();
+            hoursString = Mathf.RoundToInt(timeHours).ToString();
         }
 
         return $"{hoursString}:{minutesString}:{secondsString}";
