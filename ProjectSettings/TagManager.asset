@@ -8,6 +8,7 @@ TagManager:
   - Time Clock
   - Tank
   - Car
+  - Pickup
   layers:
   - Default
   - TransparentFX
