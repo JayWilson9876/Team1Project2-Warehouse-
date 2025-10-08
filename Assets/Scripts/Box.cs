@@ -1,26 +1,33 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Box : MonoBehaviour
 {
-    public GameObject[] items = new GameObject[4];
+    public List<GameObject> items = new List<GameObject>();
 
-    void PlaceItemInBox(GameObject item)
+    void Start()
     {
-        items[items.Length] = item;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+    }
+
+    public void PlaceItemInBox(GameObject item)
+    {
+        items.Add(item);
         item.transform.SetParent(transform);
-        if (items.Length == 1)
+        if (items.Count == 1)
         {
             item.transform.localPosition = new Vector3(-1, 0, 1);
         }
-        if (items.Length == 2)
+        if (items.Count == 2)
         {
             item.transform.localPosition = new Vector3(1, 0, 1);
         }
-        if (items.Length == 3)
+        if (items.Count == 3)
         {
             item.transform.localPosition = new Vector3(-1, 0, -1);
         }
-        if (items.Length == 4)
+        if (items.Count == 4)
         {
             item.transform.localPosition = new Vector3(1, 0, -1);
         }

@@ -3,27 +3,27 @@ using UnityEngine;
 public class ObjectHolder : MonoBehaviour
 {
     public Transform parent;
-    GameObject currentBox;
+    GameObject currentItem;
     Rigidbody currentRigidBody;
 
-    public void PickUpBox(GameObject box)
+    public void PickUpItem(GameObject item)
     {
-        box.transform.SetParent(parent);
-        currentBox = box;
-        currentRigidBody = currentBox.GetComponent<Rigidbody>();
-        currentBox.GetComponent<BoxCollider>().enabled = false;
+        item.transform.SetParent(parent);
+        currentItem = item;
+        currentRigidBody = currentItem.GetComponent<Rigidbody>();
+        currentItem.GetComponent<BoxCollider>().enabled = false;
         currentRigidBody.isKinematic = true;
-        currentBox.transform.localPosition = Vector3.zero;
-        currentBox.transform.eulerAngles = new Vector3(0, 0, 0);
+        currentItem.transform.localPosition = Vector3.zero;
+        currentItem.transform.eulerAngles = new Vector3(0, 0, 0);
         
     }
 
-    public void DropBox()
+    public void DropItem()
     {
-        currentBox.GetComponent<BoxCollider>().enabled = true;
+        currentItem.GetComponent<BoxCollider>().enabled = true;
         currentRigidBody.isKinematic = false;
         currentRigidBody = null;
-        currentBox.transform.SetParent(null);
-        currentBox = null;
+        currentItem.transform.SetParent(null);
+        currentItem = null;
     }
 }

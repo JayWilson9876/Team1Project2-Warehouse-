@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     float timeHours = 0;
     bool clockedIn = false;
     bool done = false;
-    Scene currentScene = SceneManager.GetActiveScene();
+    Scene currentScene;
     public GameObject truck1Set1;
     public GameObject truck2Set1;
     public GameObject truck3Set1;
@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         interactText.enabled = false;
+        currentScene = SceneManager.GetActiveScene();
     }
 
     void Update()
@@ -86,10 +87,14 @@ public class Player : MonoBehaviour
             }
             else
             {
-                if (hit.collider.CompareTag("Open Box"))
+                if ((hit.collider.CompareTag("Open Box 1")) || (hit.collider.CompareTag("Open Box 2")) || (hit.collider.CompareTag("Open Box 3")))
                 {
                     currentBoxScript = hit.collider.GetComponent<Box>();
-                    if (currentBoxScript.items.Length < 4)
+                    if (currentBoxScript != null)
+                    {
+                        print("Not empty");
+                    }
+                    if (currentBoxScript.items.Count < 4)
                     {
                         canInteract = true;
                         interactText.text = "Put In Box";
@@ -100,21 +105,30 @@ public class Player : MonoBehaviour
         }
         else
         {
-            canInteract = false;
-            interactText.enabled = false;
+            if (holdingObject)
+            {
+                canInteract = true;
+                interactText.text = "Drop";
+                interactText.enabled = true;
+            }
+            else
+            {
+                canInteract = false;
+                interactText.enabled = false;
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (!holdingObject)
+            if (canInteract)
             {
-                if (canInteract)
+                if (!holdingObject)
                 {
                     if (Physics.Raycast(ray, out hit, 2.5f))
                     {
-                        if (hit.collider.CompareTag("Box"))
+                        if (hit.collider.CompareTag("Pickup"))
                         {
-                            objectHolderScript.PickUpBox(hit.transform.gameObject);
+                            objectHolderScript.PickUpItem(hit.transform.gameObject);
                             holdingObject = true;
                         }
                         else if (hit.collider.CompareTag("Time Clock"))
@@ -159,11 +173,21 @@ public class Player : MonoBehaviour
                         }
                     }
                 }
-            }
-            else
-            {
-                objectHolderScript.DropBox();
-                holdingObject = false;
+                else
+                {
+                    if (Physics.Raycast(ray, out hit, 2.5f))
+                    {
+                        if ((hit.collider.CompareTag("Open Box 1")) || (hit.collider.CompareTag("Open Box 2")) || (hit.collider.CompareTag("Open Box 3")))
+                        {
+                            currentBoxScript.PlaceItemInBox(hit.transform.gameObject);
+                        }
+                        else
+                        {
+                            objectHolderScript.DropItem();
+                            holdingObject = false;
+                        }
+                    }
+                }
             }
         }
 
