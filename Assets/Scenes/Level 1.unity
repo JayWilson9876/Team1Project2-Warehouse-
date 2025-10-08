@@ -3441,6 +3441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Truck
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: b70eb1cf1be37564f8063fba2095584b, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: b70eb1cf1be37564f8063fba2095584b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.239286

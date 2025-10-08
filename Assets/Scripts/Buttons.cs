@@ -5,7 +5,7 @@ public class Buttons : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void HelpButton()

@@ -1,7 +1,9 @@
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +18,25 @@ public class Player : MonoBehaviour
     float timeHours = 0;
     bool clockedIn = false;
     bool done = false;
+    Scene currentScene = SceneManager.GetActiveScene();
+    public GameObject truck1Set1;
+    public GameObject truck2Set1;
+    public GameObject truck3Set1;
+    public GameObject truck1Set2;
+    public GameObject truck2Set2;
+    public GameObject truck3Set2;
+    public GameObject truck1Set3;
+    public GameObject truck2Set3;
+    public GameObject truck3Set3;
+    int truck1Capacity = 0;
+    int truck2Capacity = 0;
+    int truck3Capacity = 0;
+    public GameObject truck1Door1;
+    public GameObject truck2Door1;
+    public GameObject truck3Door1;
+    public GameObject truck1Door2;
+    public GameObject truck2Door2;
+    public GameObject truck3Door2;
 
     void Start()
     {
@@ -50,6 +71,12 @@ public class Player : MonoBehaviour
                     interactText.enabled = true;
                 }
             }
+            else if (hit.collider.CompareTag("Car"))
+            {
+                canInteract = true;
+                interactText.text = "Finish";
+                interactText.enabled = true;
+            }
         }
         else
         {
@@ -75,11 +102,41 @@ public class Player : MonoBehaviour
                             if (!clockedIn)
                             {
                                 clockedIn = true;
+                                truck1Door1.transform.rotation = Quaternion.Slerp(truck1Door1.transform.rotation, Quaternion.Euler(0, 120, 0), 5f *  Time.deltaTime);
+                                truck1Door2.transform.rotation = Quaternion.Slerp(truck1Door2.transform.rotation, Quaternion.Euler(0, -120, 0), 5f * Time.deltaTime);
+                                truck2Door1.transform.rotation = Quaternion.Slerp(truck1Door1.transform.rotation, Quaternion.Euler(0, 120, 0), 5f * Time.deltaTime);
+                                truck2Door2.transform.rotation = Quaternion.Slerp(truck1Door2.transform.rotation, Quaternion.Euler(0, -120, 0), 5f * Time.deltaTime);
+                                truck3Door1.transform.rotation = Quaternion.Slerp(truck1Door1.transform.rotation, Quaternion.Euler(0, 120, 0), 5f * Time.deltaTime);
+                                truck3Door2.transform.rotation = Quaternion.Slerp(truck1Door2.transform.rotation, Quaternion.Euler(0, -120, 0), 5f * Time.deltaTime);
+
+
                             }
                             else
                             {
                                 clockedIn = false;
                                 done = true;
+                            }
+                        }
+                        else if (hit.collider.CompareTag("Car"))
+                        {
+                            if (done)
+                            {
+                                if (currentScene.name == "Tutorial")
+                                {
+                                    SceneManager.LoadScene("Level 1");
+                                }
+                                if (currentScene.name == "Level 1")
+                                {
+                                    SceneManager.LoadScene("LVL 2");
+                                }
+                                else if (currentScene.name == "LVL 2")
+                                {
+                                    SceneManager.LoadScene("LVL 3");
+                                }
+                                else if (currentScene.name == "LVL 3")
+                                {
+
+                                }
                             }
                         }
                     }
