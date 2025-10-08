@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public GameObject truck1Door2;
     public GameObject truck2Door2;
     public GameObject truck3Door2;
+    Box currentBoxScript;
 
     void Start()
     {
@@ -50,32 +51,51 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 2.5f))
         {
-            if (hit.collider.CompareTag("Box"))
+            if (!holdingObject)
             {
-                canInteract = true;
-                interactText.text = "Pick up";
-                interactText.enabled = true;
-            }
-            else if (hit.collider.CompareTag("Time Clock"))
-            {
-                if (!clockedIn && !done)
+                if (hit.collider.CompareTag("Pickup"))
                 {
                     canInteract = true;
-                    interactText.text = "Clock In";
+                    interactText.text = "Pick up";
                     interactText.enabled = true;
                 }
-                else if (clockedIn && !done)
+                else if (hit.collider.CompareTag("Time Clock"))
                 {
-                    canInteract = true;
-                    interactText.text = "Clock Out";
-                    interactText.enabled = true;
+                    if (!clockedIn && !done)
+                    {
+                        canInteract = true;
+                        interactText.text = "Clock In";
+                        interactText.enabled = true;
+                    }
+                    else if (clockedIn && !done)
+                    {
+                        canInteract = true;
+                        interactText.text = "Clock Out";
+                        interactText.enabled = true;
+                    }
+                }
+                else if (hit.collider.CompareTag("Car"))
+                {
+                    if (done)
+                    {
+                        canInteract = true;
+                        interactText.text = "Finish";
+                        interactText.enabled = true;
+                    }
                 }
             }
-            else if (hit.collider.CompareTag("Car"))
+            else
             {
-                canInteract = true;
-                interactText.text = "Finish";
-                interactText.enabled = true;
+                if (hit.collider.CompareTag("Open Box"))
+                {
+                    currentBoxScript = hit.collider.GetComponent<Box>();
+                    if (currentBoxScript.items.Length < 4)
+                    {
+                        canInteract = true;
+                        interactText.text = "Put In Box";
+                        interactText.enabled = true;
+                    }
+                }
             }
         }
         else
@@ -102,14 +122,12 @@ public class Player : MonoBehaviour
                             if (!clockedIn)
                             {
                                 clockedIn = true;
-                                truck1Door1.transform.rotation = Quaternion.Slerp(truck1Door1.transform.rotation, Quaternion.Euler(0, 120, 0), 5f *  Time.deltaTime);
-                                truck1Door2.transform.rotation = Quaternion.Slerp(truck1Door2.transform.rotation, Quaternion.Euler(0, -120, 0), 5f * Time.deltaTime);
-                                truck2Door1.transform.rotation = Quaternion.Slerp(truck1Door1.transform.rotation, Quaternion.Euler(0, 120, 0), 5f * Time.deltaTime);
-                                truck2Door2.transform.rotation = Quaternion.Slerp(truck1Door2.transform.rotation, Quaternion.Euler(0, -120, 0), 5f * Time.deltaTime);
-                                truck3Door1.transform.rotation = Quaternion.Slerp(truck1Door1.transform.rotation, Quaternion.Euler(0, 120, 0), 5f * Time.deltaTime);
-                                truck3Door2.transform.rotation = Quaternion.Slerp(truck1Door2.transform.rotation, Quaternion.Euler(0, -120, 0), 5f * Time.deltaTime);
-
-
+                                truck1Door1.transform.eulerAngles = new Vector3(0, 120, 0);
+                                truck1Door2.transform.eulerAngles = new Vector3(0, -120, 0);
+                                truck2Door1.transform.eulerAngles = new Vector3(0, 120, 0);
+                                truck2Door2.transform.eulerAngles = new Vector3(0, -120, 0);
+                                truck3Door1.transform.eulerAngles = new Vector3(0, 120, 0);
+                                truck3Door2.transform.eulerAngles = new Vector3(0, -120, 0);
                             }
                             else
                             {

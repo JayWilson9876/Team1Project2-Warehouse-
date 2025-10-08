@@ -5,15 +5,6 @@ public class ObjectHolder : MonoBehaviour
     public Transform parent;
     GameObject currentBox;
     Rigidbody currentRigidBody;
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
 
     public void PickUpBox(GameObject box)
     {
