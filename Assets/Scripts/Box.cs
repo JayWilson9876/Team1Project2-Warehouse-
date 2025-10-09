@@ -4,6 +4,10 @@ using System.Collections.Generic;
 public class Box : MonoBehaviour
 {
     public List<GameObject> items = new List<GameObject>();
+    public GameObject slot1;
+    public GameObject slot2;
+    public GameObject slot3;
+    public GameObject slot4;
 
     void Start()
     {
@@ -14,23 +18,25 @@ public class Box : MonoBehaviour
     public void PlaceItemInBox(GameObject item)
     {
         items.Add(item);
-        item.transform.SetParent(transform);
         if (items.Count == 1)
         {
-            item.transform.localPosition = new Vector3(-1, 0, 1);
+            item.transform.SetParent(slot1.transform);
         }
         if (items.Count == 2)
         {
-            item.transform.localPosition = new Vector3(1, 0, 1);
+            item.transform.SetParent(slot2.transform);
         }
         if (items.Count == 3)
         {
-            item.transform.localPosition = new Vector3(-1, 0, -1);
+            item.transform.SetParent(slot3.transform);
         }
         if (items.Count == 4)
         {
-            item.transform.localPosition = new Vector3(1, 0, -1);
+            item.transform.SetParent(slot4.transform);
         }
-        item.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        item.transform.localPosition = new Vector3(0, 0, 0);
+        item.transform.localScale = new Vector3(0.125f, 0.25f, 0.125f);
+        item.transform.eulerAngles = new Vector3(0, 0, 0);
+        item.tag = "Untagged";
     }
 }
