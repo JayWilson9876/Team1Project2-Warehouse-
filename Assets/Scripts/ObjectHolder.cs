@@ -26,4 +26,10 @@ public class ObjectHolder : MonoBehaviour
         currentItem.transform.SetParent(null);
         currentItem = null;
     }
+
+    public void Unparent(Box currentBoxScript)
+    {
+        currentItem.transform.parent = null;
+        currentBoxScript.PlaceItemInBox(currentItem);
+    }
 }
