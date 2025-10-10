@@ -9,11 +9,14 @@ TagManager:
   - Tank
   - Car
   - Pickup
+  - Open Box 1
+  - Open Box 2
+  - Open Box 3
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Item
   - Water
   - UI
   - 

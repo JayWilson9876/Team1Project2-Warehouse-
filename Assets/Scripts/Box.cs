@@ -8,11 +8,14 @@ public class Box : MonoBehaviour
     public GameObject slot2;
     public GameObject slot3;
     public GameObject slot4;
+    public GameObject openBox;
+    public GameObject closedBox;
 
     void Start()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
+        closedBox.SetActive(false);
     }
 
     public void PlaceItemInBox(GameObject item)
@@ -33,6 +36,20 @@ public class Box : MonoBehaviour
         if (items.Count == 4)
         {
             item.transform.SetParent(slot4.transform);
+            openBox.SetActive(false);
+            closedBox.SetActive(true);
+            if (gameObject.tag == "Open Box 1")
+            {
+
+            }
+            else if (gameObject.tag == "Open Box 2")
+            {
+
+            }
+            else if (gameObject.tag == "Open Box 3")
+            {
+
+            }
         }
         item.transform.localPosition = new Vector3(0, 0, 0);
         item.transform.localScale = new Vector3(0.125f, 0.25f, 0.125f);
