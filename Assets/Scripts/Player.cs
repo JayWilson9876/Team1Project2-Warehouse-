@@ -45,6 +45,9 @@ public class Player : MonoBehaviour
     public GameObject catSpawner;
     public GameObject chickenSpawner;
     public GameObject cowSpawner;
+    public GameObject box1Spawner;
+    public GameObject box2Spawner;
+    public GameObject box3Spawner;
 
     void Start()
     {
@@ -70,21 +73,21 @@ public class Player : MonoBehaviour
         {
             if (!holdingObject)
             {
-                if (hit.collider.CompareTag("Pickup"))
+                if (hit.collider.CompareTag("Closed Box 1") || hit.collider.CompareTag("Closed Box 2") || hit.collider.CompareTag("Closed Box 3"))
+                {
+                    canInteract = true;
+                    interactText.text = "Pick Up";
+                    interactText.enabled = true;
+                }
+                else if (hit.collider.CompareTag("Pickup"))
                 {
                     currentItemScript = hit.collider.GetComponent<Item>();
                     if (currentItemScript.canBePickedUp)
                     {
                         canInteract = true;
-                        interactText.text = "Pick up";
+                        interactText.text = "Pick Up";
                         interactText.enabled = true;
                     }
-                }
-                else if ((hit.collider.CompareTag("Closed Box 1")) || (hit.collider.CompareTag("Closed Box 2")) || (hit.collider.CompareTag("Closed Box 3")))
-                {
-                    canInteract = true;
-                    interactText.text = "Pick up";
-                    interactText.enabled = true;
                 }
                 else if (hit.collider.CompareTag("Time Clock"))
                 {
@@ -115,7 +118,6 @@ public class Player : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit, 2.5f, ~itemLayer))
                 {
-                    print(hit.collider.tag);
                     if ((hit.collider.CompareTag("Open Box 1")) || (hit.collider.CompareTag("Open Box 2")) || (hit.collider.CompareTag("Open Box 3")))
                     {
                         currentBoxScript = hit.collider.GetComponent<Box>();
@@ -167,6 +169,8 @@ public class Player : MonoBehaviour
                     {
                         if ((hit.collider.CompareTag("Pickup")) || (hit.collider.CompareTag("Closed Box 1")) || (hit.collider.CompareTag("Closed Box 2")) || (hit.collider.CompareTag("Closed Box 3")))
                         {
+                            objectHolderScript.PickUpItem(hit.transform.gameObject);
+                            holdingObject = true;
                             if (hit.collider.CompareTag("Pickup"))
                             {
                                 if (!currentItemScript.pickedUpFirstTime)
@@ -175,8 +179,6 @@ public class Player : MonoBehaviour
                                     currentItemScript.SendSpawnCommand();
                                 }
                             }
-                            objectHolderScript.PickUpItem(hit.transform.gameObject);
-                            holdingObject = true;
                         }
                         else if (hit.collider.CompareTag("Time Clock"))
                         {
@@ -192,6 +194,9 @@ public class Player : MonoBehaviour
                                 catSpawner.GetComponent<Spawner>().Spawn();
                                 chickenSpawner.GetComponent<Spawner>().Spawn();
                                 cowSpawner.GetComponent<Spawner>().Spawn();
+                                box1Spawner.GetComponent<Spawner>().Spawn();
+                                box2Spawner.GetComponent<Spawner>().Spawn();
+                                box3Spawner.GetComponent<Spawner>().Spawn();
                             }
                             else
                             {
@@ -237,13 +242,16 @@ public class Player : MonoBehaviour
                         {
                             truck1Capacity++;
                             objectHolderScript.DestroyBox();
+                            holdingObject = false;
                             if (truck1Capacity == 1)
                             {
                                 truck1Set1.SetActive(true);
+                                box1Spawner.GetComponent<Spawner>().Spawn();
                             }
                             else if (truck1Capacity == 2)
                             {
                                 truck1Set2.SetActive(true);
+                                box1Spawner.GetComponent<Spawner>().Spawn();
                             }
                             else if (truck1Capacity == 3)
                             {
@@ -256,13 +264,16 @@ public class Player : MonoBehaviour
                         {
                             truck2Capacity++;
                             objectHolderScript.DestroyBox();
+                            holdingObject = false;
                             if (truck2Capacity == 1)
                             {
                                 truck2Set1.SetActive(true);
+                                box2Spawner.GetComponent<Spawner>().Spawn();
                             }
                             else if (truck2Capacity == 2)
                             {
                                 truck2Set2.SetActive(true);
+                                box2Spawner.GetComponent<Spawner>().Spawn();
                             }
                             if (truck2Capacity == 3)
                             {
@@ -275,15 +286,18 @@ public class Player : MonoBehaviour
                         {
                             truck3Capacity++;
                             objectHolderScript.DestroyBox();
+                            holdingObject = false;
                             if (truck3Capacity == 1)
                             {
                                 truck3Set1.SetActive(true);
+                                box3Spawner.GetComponent<Spawner>().Spawn();
                             }
                             else if (truck3Capacity == 2)
                             {
                                 truck3Set2.SetActive(true);
+                                box3Spawner.GetComponent<Spawner>().Spawn();
                             }
-                            if (truck3Capacity == 3)
+                            else if (truck3Capacity == 3)
                             {
                                 truck3Set3.SetActive(true);
                                 truck3Door1.transform.eulerAngles = new Vector3(0, 0, 0);
