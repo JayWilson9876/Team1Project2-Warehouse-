@@ -71,6 +71,12 @@ public class Player : MonoBehaviour
                         interactText.enabled = true;
                     }
                 }
+                else if ((hit.collider.CompareTag("Closed Box 1")) || (hit.collider.CompareTag("Closed Box 2")) || (hit.collider.CompareTag("Closed Box 3")))
+                {
+                    canInteract = true;
+                    interactText.text = "Pick up";
+                    interactText.enabled = true;
+                }
                 else if (hit.collider.CompareTag("Time Clock"))
                 {
                     if (!clockedIn && !done)
@@ -110,7 +116,7 @@ public class Player : MonoBehaviour
                             interactText.enabled = true;
                         }
                     }
-                    else if ((hit.collider.CompareTag("Truck 1") && objectHolderScript.CompareTag("Closed Box 1")) || (hit.collider.CompareTag("Truck 2") && objectHolderScript.CompareTag("Closed Box 2")) || (hit.collider.CompareTag("Truck 3") && objectHolderScript.CompareTag("Closed Box 3")))
+                    else if ((hit.collider.CompareTag("Truck 1") && objectHolderScript.CompareTag("Closed Box 1") && truck1Capacity < 3) || (hit.collider.CompareTag("Truck 2") && objectHolderScript.CompareTag("Closed Box 2") && truck2Capacity < 3) || (hit.collider.CompareTag("Truck 3") && objectHolderScript.CompareTag("Closed Box 3") && truck3Capacity < 3))
                     {
                         canInteract = true;
                         interactText.text = "Put In Truck";
@@ -149,12 +155,15 @@ public class Player : MonoBehaviour
                 {
                     if (Physics.Raycast(ray, out hit, 2.5f))
                     {
-                        if (hit.collider.CompareTag("Pickup"))
+                        if ((hit.collider.CompareTag("Pickup")) || (hit.collider.CompareTag("Closed Box 1")) || (hit.collider.CompareTag("Closed Box 2")) || (hit.collider.CompareTag("Closed Box 3")))
                         {
-                            if (!currentItemScript.pickedUpFirstTime)
+                            if (hit.collider.CompareTag("Pickup"))
                             {
-                                currentItemScript.pickedUpFirstTime = true;
-                                currentItemScript.SendSpawnCommand();
+                                if (!currentItemScript.pickedUpFirstTime)
+                                {
+                                    currentItemScript.pickedUpFirstTime = true;
+                                    currentItemScript.SendSpawnCommand();
+                                }
                             }
                             objectHolderScript.PickUpItem(hit.transform.gameObject);
                             holdingObject = true;
@@ -208,24 +217,41 @@ public class Player : MonoBehaviour
                 {
                     if (Physics.Raycast(ray, out hit, 2.5f, ~itemLayer))
                     {
-                        if ((hit.collider.CompareTag("Open Box 1")) || (hit.collider.CompareTag("Open Box 2")) || (hit.collider.CompareTag("Open Box 3")))
+                        if ((objectHolderScript.currentItem.CompareTag("Pickup")) && (hit.collider.CompareTag("Open Box 1")) || (hit.collider.CompareTag("Open Box 2")) || (hit.collider.CompareTag("Open Box 3")))
                         {
                             objectHolderScript.Unparent(currentBoxScript);
                             holdingObject = false;
                             interactText.enabled = false;
                         }
-                        else if (hit.collider.CompareTag("Truck 1") && objectHolderScript.CompareTag("Closed Box 1"))
+                        else if (hit.collider.CompareTag("Truck 1") && objectHolderScript.currentItem.CompareTag("Closed Box 1") && truck1Capacity < 3)
                         {
-
+                            truck1Capacity++;
                             objectHolderScript.DestroyBox();
+                            if (truck1Capacity == 3)
+                            {
+                                truck1Door1.transform.eulerAngles = new Vector3(0, 0, 0);
+                                truck1Door2.transform.eulerAngles = new Vector3(0, 0, 0);
+                            }
                         }
-                        else if (hit.collider.CompareTag("Truck 2") && objectHolderScript.CompareTag("Closed Box 2"))
+                        else if (hit.collider.CompareTag("Truck 2") && objectHolderScript.currentItem.CompareTag("Closed Box 2") && truck2Capacity < 3)
                         {
+                            truck2Capacity++;
                             objectHolderScript.DestroyBox();
+                            if (truck2Capacity == 3)
+                            {
+                                truck2Door1.transform.eulerAngles = new Vector3(0, 0, 0);
+                                truck2Door2.transform.eulerAngles = new Vector3(0, 0, 0);
+                            }
                         }
-                        else if (hit.collider.CompareTag("Truck 3") && objectHolderScript.CompareTag("Closed Box 3"))
+                        else if (hit.collider.CompareTag("Truck 3") && objectHolderScript.currentItem.CompareTag("Closed Box 3") && truck3Capacity < 3)
                         {
+                            truck3Capacity++;
                             objectHolderScript.DestroyBox();
+                            if (truck3Capacity == 3)
+                            {
+                                truck3Door1.transform.eulerAngles = new Vector3(0, 0, 0);
+                                truck3Door2.transform.eulerAngles = new Vector3(0, 0, 0);
+                            }
                         }
                         else
                         {

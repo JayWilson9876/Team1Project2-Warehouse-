@@ -13,6 +13,9 @@ TagManager:
   - Open Box 2
   - Open Box 3
   - Door
+  - Truck 1
+  - Truck 2
+  - Truck 3
   layers:
   - Default
   - TransparentFX

@@ -10,10 +10,11 @@ public class Box : MonoBehaviour
     public GameObject slot4;
     public GameObject openBox;
     public GameObject closedBox;
+    Rigidbody rb;
 
     void Start()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         closedBox.SetActive(false);
     }
@@ -38,6 +39,7 @@ public class Box : MonoBehaviour
             item.transform.SetParent(slot4.transform);
             openBox.SetActive(false);
             closedBox.SetActive(true);
+            rb.isKinematic = false;
             if (gameObject.tag == "Open Box 1")
             {
                 gameObject.tag = "Closed Box 1";
