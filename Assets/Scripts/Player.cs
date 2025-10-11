@@ -50,6 +50,15 @@ public class Player : MonoBehaviour
     {
         interactText.enabled = false;
         currentScene = SceneManager.GetActiveScene();
+        truck1Set1.SetActive(false);
+        truck2Set1.SetActive(false);
+        truck3Set1.SetActive(false);
+        truck1Set2.SetActive(false);
+        truck2Set2.SetActive(false);
+        truck3Set2.SetActive(false);
+        truck1Set3.SetActive(false);
+        truck2Set3.SetActive(false);
+        truck3Set3.SetActive(false);
     }
 
     void Update()
@@ -106,6 +115,7 @@ public class Player : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit, 2.5f, ~itemLayer))
                 {
+                    print(hit.collider.tag);
                     if ((hit.collider.CompareTag("Open Box 1")) || (hit.collider.CompareTag("Open Box 2")) || (hit.collider.CompareTag("Open Box 3")))
                     {
                         currentBoxScript = hit.collider.GetComponent<Box>();
@@ -227,8 +237,17 @@ public class Player : MonoBehaviour
                         {
                             truck1Capacity++;
                             objectHolderScript.DestroyBox();
-                            if (truck1Capacity == 3)
+                            if (truck1Capacity == 1)
                             {
+                                truck1Set1.SetActive(true);
+                            }
+                            else if (truck1Capacity == 2)
+                            {
+                                truck1Set2.SetActive(true);
+                            }
+                            else if (truck1Capacity == 3)
+                            {
+                                truck1Set3.SetActive(true);
                                 truck1Door1.transform.eulerAngles = new Vector3(0, 0, 0);
                                 truck1Door2.transform.eulerAngles = new Vector3(0, 0, 0);
                             }
@@ -237,8 +256,17 @@ public class Player : MonoBehaviour
                         {
                             truck2Capacity++;
                             objectHolderScript.DestroyBox();
+                            if (truck2Capacity == 1)
+                            {
+                                truck2Set1.SetActive(true);
+                            }
+                            else if (truck2Capacity == 2)
+                            {
+                                truck2Set2.SetActive(true);
+                            }
                             if (truck2Capacity == 3)
                             {
+                                truck2Set3.SetActive(true);
                                 truck2Door1.transform.eulerAngles = new Vector3(0, 0, 0);
                                 truck2Door2.transform.eulerAngles = new Vector3(0, 0, 0);
                             }
@@ -247,8 +275,17 @@ public class Player : MonoBehaviour
                         {
                             truck3Capacity++;
                             objectHolderScript.DestroyBox();
+                            if (truck3Capacity == 1)
+                            {
+                                truck3Set1.SetActive(true);
+                            }
+                            else if (truck3Capacity == 2)
+                            {
+                                truck3Set2.SetActive(true);
+                            }
                             if (truck3Capacity == 3)
                             {
+                                truck3Set3.SetActive(true);
                                 truck3Door1.transform.eulerAngles = new Vector3(0, 0, 0);
                                 truck3Door2.transform.eulerAngles = new Vector3(0, 0, 0);
                             }

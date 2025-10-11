@@ -52,6 +52,7 @@ public class Box : MonoBehaviour
             {
                 gameObject.tag = "Closed Box 3";
             }
+            gameObject.layer = 3;
         }
         item.transform.localPosition = new Vector3(0, 0, 0);
         item.transform.localScale = new Vector3(0.125f, 0.25f, 0.125f);

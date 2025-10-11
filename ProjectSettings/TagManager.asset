@@ -16,6 +16,9 @@ TagManager:
   - Truck 1
   - Truck 2
   - Truck 3
+  - Closed Box 1
+  - Closed Box 2
+  - Closed Box 3
   layers:
   - Default
   - TransparentFX
