@@ -40,6 +40,11 @@ public class Player : MonoBehaviour
     Box currentBoxScript;
     public LayerMask itemLayer;
     Item currentItemScript;
+    public GameObject door;
+    bool doorOpen = false;
+    public GameObject catSpawner;
+    public GameObject chickenSpawner;
+    public GameObject cowSpawner;
 
     void Start()
     {
@@ -105,6 +110,12 @@ public class Player : MonoBehaviour
                             interactText.enabled = true;
                         }
                     }
+                    else if ((hit.collider.CompareTag("Truck 1") && objectHolderScript.CompareTag("Closed Box 1")) || (hit.collider.CompareTag("Truck 2") && objectHolderScript.CompareTag("Closed Box 2")) || (hit.collider.CompareTag("Truck 3") && objectHolderScript.CompareTag("Closed Box 3")))
+                    {
+                        canInteract = true;
+                        interactText.text = "Put In Truck";
+                        interactText.enabled = true;
+                    }
                     else
                     {
                         canInteract = true;
@@ -143,13 +154,10 @@ public class Player : MonoBehaviour
                             if (!currentItemScript.pickedUpFirstTime)
                             {
                                 currentItemScript.pickedUpFirstTime = true;
+                                currentItemScript.SendSpawnCommand();
                             }
                             objectHolderScript.PickUpItem(hit.transform.gameObject);
                             holdingObject = true;
-                            if (!currentItemScript.pickedUpFirstTime)
-                            {
-                                currentItemScript.SendSpawnCommand();
-                            }
                         }
                         else if (hit.collider.CompareTag("Time Clock"))
                         {
@@ -162,6 +170,9 @@ public class Player : MonoBehaviour
                                 truck2Door2.transform.eulerAngles = new Vector3(0, -120, 0);
                                 truck3Door1.transform.eulerAngles = new Vector3(0, 120, 0);
                                 truck3Door2.transform.eulerAngles = new Vector3(0, -120, 0);
+                                catSpawner.GetComponent<Spawner>().Spawn();
+                                chickenSpawner.GetComponent<Spawner>().Spawn();
+                                cowSpawner.GetComponent<Spawner>().Spawn();
                             }
                             else
                             {
@@ -203,6 +214,19 @@ public class Player : MonoBehaviour
                             holdingObject = false;
                             interactText.enabled = false;
                         }
+                        else if (hit.collider.CompareTag("Truck 1") && objectHolderScript.CompareTag("Closed Box 1"))
+                        {
+
+                            objectHolderScript.DestroyBox();
+                        }
+                        else if (hit.collider.CompareTag("Truck 2") && objectHolderScript.CompareTag("Closed Box 2"))
+                        {
+                            objectHolderScript.DestroyBox();
+                        }
+                        else if (hit.collider.CompareTag("Truck 3") && objectHolderScript.CompareTag("Closed Box 3"))
+                        {
+                            objectHolderScript.DestroyBox();
+                        }
                         else
                         {
                             objectHolderScript.DropItem();
@@ -234,6 +258,18 @@ public class Player : MonoBehaviour
         }
 
         timerText.text = Timer();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Door"))
+        {
+            if (!doorOpen)
+            {
+                door.transform.eulerAngles = new Vector3(0, -180, 0);
+                doorOpen = true;
+            }
+        }
     }
 
     string Timer()

@@ -25,7 +25,7 @@ public class Item : MonoBehaviour
     {
         if ((transform.position != targetPosition) && !canBePickedUp)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, (6.637f / 10f) * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, (6.637f / 5f) * Time.deltaTime);
         }
         else if (!pickedUpFirstTime)
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObjectHolder : MonoBehaviour
 {
     public Transform parent;
-    GameObject currentItem;
+    public GameObject currentItem;
     Rigidbody currentRigidBody;
 
     public void PickUpItem(GameObject item)
@@ -30,5 +30,12 @@ public class ObjectHolder : MonoBehaviour
     {
         currentItem.transform.parent = null;
         currentBoxScript.PlaceItemInBox(currentItem);
+    }
+
+    public void DestroyBox()
+    {
+        Destroy(currentItem);
+        currentItem = null;
+        currentRigidBody = null;
     }
 }

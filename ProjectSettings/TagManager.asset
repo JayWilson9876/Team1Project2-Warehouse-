@@ -12,6 +12,7 @@ TagManager:
   - Open Box 1
   - Open Box 2
   - Open Box 3
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -40,15 +40,15 @@ public class Box : MonoBehaviour
             closedBox.SetActive(true);
             if (gameObject.tag == "Open Box 1")
             {
-
+                gameObject.tag = "Closed Box 1";
             }
             else if (gameObject.tag == "Open Box 2")
             {
-
+                gameObject.tag = "Closed Box 2";
             }
             else if (gameObject.tag == "Open Box 3")
             {
-
+                gameObject.tag = "Closed Box 3";
             }
         }
         item.transform.localPosition = new Vector3(0, 0, 0);

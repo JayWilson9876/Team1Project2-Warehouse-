@@ -29959,6 +29959,10 @@ MonoBehaviour:
   itemLayer:
     serializedVersion: 2
     m_Bits: 8
+  door: {fileID: 0}
+  catSpawner: {fileID: 0}
+  chickenSpawner: {fileID: 0}
+  cowSpawner: {fileID: 0}
 --- !u!4 &710470891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013872234864, guid: da5894b154be11342a3fcfc401f7b4aa, type: 3}
@@ -86473,6 +86477,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8c6da69fae219a343b5f1aa592854ce8, type: 3}
   m_PrefabInstance: {fileID: 641113259}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1963685231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963685233}
+  - component: {fileID: 1963685232}
+  m_Layer: 0
+  m_Name: DoorTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1963685232
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963685231}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1963685233
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963685231}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.9985757, y: 1.9118934, z: 5.3613586}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1966415468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2284289179172918301, guid: 8ed2a5651976f214ba27cbc9b1f9fcc4, type: 3}
@@ -87289,6 +87346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 1985049011}
+  currentItem: {fileID: 0}
 --- !u!1001 &1985066864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -94155,3 +94213,4 @@ SceneRoots:
   - {fileID: 1780223150}
   - {fileID: 592848458}
   - {fileID: 1951004175}
+  - {fileID: 1963685233}
