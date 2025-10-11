@@ -42,9 +42,9 @@ public class Player : MonoBehaviour
     Item currentItemScript;
     public GameObject door;
     bool doorOpen = false;
-    public GameObject catSpawner;
-    public GameObject chickenSpawner;
-    public GameObject cowSpawner;
+    public GameObject item1Spawner;
+    public GameObject item2Spawner;
+    public GameObject item3Spawner;
     public GameObject box1Spawner;
     public GameObject box2Spawner;
     public GameObject box3Spawner;
@@ -191,9 +191,9 @@ public class Player : MonoBehaviour
                                 truck2Door2.transform.eulerAngles = new Vector3(0, -120, 0);
                                 truck3Door1.transform.eulerAngles = new Vector3(0, 120, 0);
                                 truck3Door2.transform.eulerAngles = new Vector3(0, -120, 0);
-                                catSpawner.GetComponent<Spawner>().Spawn();
-                                chickenSpawner.GetComponent<Spawner>().Spawn();
-                                cowSpawner.GetComponent<Spawner>().Spawn();
+                                item1Spawner.GetComponent<Spawner>().Spawn();
+                                item2Spawner.GetComponent<Spawner>().Spawn();
+                                item3Spawner.GetComponent<Spawner>().Spawn();
                                 box1Spawner.GetComponent<Spawner>().Spawn();
                                 box2Spawner.GetComponent<Spawner>().Spawn();
                                 box3Spawner.GetComponent<Spawner>().Spawn();
