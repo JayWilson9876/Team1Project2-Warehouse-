@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Box : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class Box : MonoBehaviour
     public GameObject openBox;
     public GameObject closedBox;
     Rigidbody rb;
+    public GameManager gameManager;
+    List<GameObject> objectsNeeded;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         closedBox.SetActive(false);
+        objectsNeeded = gameManager.CreateNewList();
     }
 
     public void PlaceItemInBox(GameObject item)
@@ -42,15 +46,36 @@ public class Box : MonoBehaviour
             rb.isKinematic = false;
             if (gameObject.tag == "Open Box 1")
             {
-                gameObject.tag = "Closed Box 1";
+                if (items.All(objectsNeeded.Contains))
+                {
+                    gameObject.tag = "Correct Box 1";
+                }
+                else
+                {
+                    gameObject.tag = "Incorrect Box 1";
+                }
             }
             else if (gameObject.tag == "Open Box 2")
             {
-                gameObject.tag = "Closed Box 2";
+                if (items.All(objectsNeeded.Contains))
+                {
+                    gameObject.tag = "Correct Box 2";
+                }
+                else
+                {
+                    gameObject.tag = "Incorrect Box 2";
+                }
             }
             else if (gameObject.tag == "Open Box 3")
             {
-                gameObject.tag = "Closed Box 3";
+                if (items.All(objectsNeeded.Contains))
+                {
+                    gameObject.tag = "Correct Box 3";
+                }
+                else
+                {
+                    gameObject.tag = "Incorrect Box 3";
+                }
             }
             gameObject.layer = 3;
         }

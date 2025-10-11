@@ -19,6 +19,12 @@ TagManager:
   - Closed Box 1
   - Closed Box 2
   - Closed Box 3
+  - Correct Box 1
+  - Correct Box 2
+  - Correct Box 3
+  - Incorrect Box 1
+  - Incorrect Box 2
+  - Incorrect Box 3
   layers:
   - Default
   - TransparentFX

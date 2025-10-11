@@ -5511,6 +5511,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7850061941504505447, guid: 6b03a4b90ae5d5942907e925787d3465, type: 3}
   m_PrefabInstance: {fileID: 128458347}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &128932266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128932268}
+  - component: {fileID: 128932267}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &128932267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128932266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0b8b33a858c974db151caa40e446e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 3234389757833258266, guid: 1ac3e9efe64da90498c96a7020760073, type: 3}
+  - {fileID: 42520594165567166, guid: b8f29a6338986f04d8c8e2406dd162b9, type: 3}
+  - {fileID: 1870345420684718544, guid: 12c1cd26c3991864d93007cd4b8661c4, type: 3}
+  - {fileID: 6350031786122012045, guid: 941f63d1432d3fa48bc18819d0949023, type: 3}
+  - {fileID: 1177732314582652899, guid: 3f4014da5032dc445906eafddf7fa5bf, type: 3}
+  - {fileID: 4884765671587279032, guid: 36c8972e5a5081740b49bcb8a9209adb, type: 3}
+--- !u!4 &128932268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128932266}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.484802, y: 1.425576, z: 5.6451}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &129759170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67500,3 +67551,4 @@ SceneRoots:
   - {fileID: 688842265}
   - {fileID: 1974722704}
   - {fileID: 1904986198}
+  - {fileID: 128932268}
