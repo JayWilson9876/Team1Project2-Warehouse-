@@ -15,7 +15,6 @@ public class ObjectHolder : MonoBehaviour
         currentRigidBody.isKinematic = true;
         currentItem.transform.localPosition = Vector3.zero;
         currentItem.transform.eulerAngles = new Vector3(0, 0, 0);
-        
     }
 
     public void DropItem()

@@ -58,16 +58,12 @@ public class Player : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Pickup"))
                 {
-                    currentItemScript = GetComponent<Item>();
+                    currentItemScript = hit.collider.GetComponent<Item>();
                     if (currentItemScript.canBePickedUp)
                     {
                         canInteract = true;
                         interactText.text = "Pick up";
                         interactText.enabled = true;
-                        if (!currentItemScript.pickedUpFirstTime)
-                        {
-                            currentItemScript.SendSpawnCommand();
-                        }
                     }
                 }
                 else if (hit.collider.CompareTag("Time Clock"))
@@ -144,8 +140,16 @@ public class Player : MonoBehaviour
                     {
                         if (hit.collider.CompareTag("Pickup"))
                         {
+                            if (!currentItemScript.pickedUpFirstTime)
+                            {
+                                currentItemScript.pickedUpFirstTime = true;
+                            }
                             objectHolderScript.PickUpItem(hit.transform.gameObject);
                             holdingObject = true;
+                            if (!currentItemScript.pickedUpFirstTime)
+                            {
+                                currentItemScript.SendSpawnCommand();
+                            }
                         }
                         else if (hit.collider.CompareTag("Time Clock"))
                         {
