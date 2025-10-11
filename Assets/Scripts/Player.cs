@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     public GameObject truck3Door2;
     Box currentBoxScript;
     public LayerMask itemLayer;
+    Item currentItemScript;
 
     void Start()
     {
@@ -51,16 +52,23 @@ public class Player : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
-        print(holdingObject);
         if (Physics.Raycast(ray, out hit, 2.5f))
         {
             if (!holdingObject)
             {
                 if (hit.collider.CompareTag("Pickup"))
                 {
-                    canInteract = true;
-                    interactText.text = "Pick up";
-                    interactText.enabled = true;
+                    currentItemScript = GetComponent<Item>();
+                    if (currentItemScript.canBePickedUp)
+                    {
+                        canInteract = true;
+                        interactText.text = "Pick up";
+                        interactText.enabled = true;
+                        if (!currentItemScript.pickedUpFirstTime)
+                        {
+                            currentItemScript.SendSpawnCommand();
+                        }
+                    }
                 }
                 else if (hit.collider.CompareTag("Time Clock"))
                 {
@@ -91,7 +99,6 @@ public class Player : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit, 2.5f, ~itemLayer))
                 {
-                    print(hit.collider.gameObject);
                     if ((hit.collider.CompareTag("Open Box 1")) || (hit.collider.CompareTag("Open Box 2")) || (hit.collider.CompareTag("Open Box 3")))
                     {
                         currentBoxScript = hit.collider.GetComponent<Box>();
