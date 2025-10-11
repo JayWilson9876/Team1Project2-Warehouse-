@@ -29959,10 +29959,10 @@ MonoBehaviour:
   itemLayer:
     serializedVersion: 2
     m_Bits: 8
-  door: {fileID: 0}
-  catSpawner: {fileID: 0}
-  chickenSpawner: {fileID: 0}
-  cowSpawner: {fileID: 0}
+  door: {fileID: 713039201}
+  catSpawner: {fileID: 1780223148}
+  chickenSpawner: {fileID: 592848456}
+  cowSpawner: {fileID: 1951004173}
 --- !u!4 &710470891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013872234864, guid: da5894b154be11342a3fcfc401f7b4aa, type: 3}
@@ -30113,25 +30113,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6174222946920197110, guid: ee88be6b8798f7149a72f257fdc25c4f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7158383
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6174222946920197110, guid: ee88be6b8798f7149a72f257fdc25c4f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6174222946920197110, guid: ee88be6b8798f7149a72f257fdc25c4f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.69826615
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174222946920197110, guid: ee88be6b8798f7149a72f257fdc25c4f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6174222946920197110, guid: ee88be6b8798f7149a72f257fdc25c4f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -88.576
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee88be6b8798f7149a72f257fdc25c4f, type: 3}
+--- !u!1 &713039201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7608321142951871107, guid: ee88be6b8798f7149a72f257fdc25c4f, type: 3}
+  m_PrefabInstance: {fileID: 713039200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &713857994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86524,7 +86533,7 @@ Transform:
   m_GameObject: {fileID: 1963685231}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.9985757, y: 1.9118934, z: 5.3613586}
+  m_LocalPosition: {x: 11.361, y: 1.49, z: 8.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
