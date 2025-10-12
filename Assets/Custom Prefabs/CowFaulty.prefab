@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1542100365506333935}
   - component: {fileID: 2538603198090239432}
   m_Layer: 0
-  m_Name: Cow
+  m_Name: CowFaulty
   m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,6 +68,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: bff25845536803c48b9ea90f0b3fe4cb, type: 2}
+  - {fileID: 2100000, guid: 5db09e65082a0f44ca2f87263b9231c8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,5 +152,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickedUpFirstTime: 0
   canBePickedUp: 0
-  targetPosition: {x: 1.628001, y: 0.4159999, z: 3.2800064}
+  targetPosition: {x: 1.6280012, y: 0.4159999, z: 3.2800064}
   spawnerName: CowSpawner

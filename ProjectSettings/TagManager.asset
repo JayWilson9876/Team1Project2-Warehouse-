@@ -25,6 +25,7 @@ TagManager:
   - Incorrect Box 1
   - Incorrect Box 2
   - Incorrect Box 3
+  - Waste Bin
   layers:
   - Default
   - TransparentFX

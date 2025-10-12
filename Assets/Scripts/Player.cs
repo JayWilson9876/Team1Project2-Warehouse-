@@ -134,6 +134,12 @@ public class Player : MonoBehaviour
                         interactText.text = "Put In Truck";
                         interactText.enabled = true;
                     }
+                    else if (hit.collider.CompareTag("Waste Bin"))
+                    {
+                        canInteract = true;
+                        interactText.text = "Throw Away";
+                        interactText.enabled = true;
+                    }
                     else
                     {
                         canInteract = true;
@@ -303,6 +309,11 @@ public class Player : MonoBehaviour
                                 truck3Door1.transform.eulerAngles = new Vector3(0, 0, 0);
                                 truck3Door2.transform.eulerAngles = new Vector3(0, 0, 0);
                             }
+                        }
+                        else if (hit.collider.CompareTag("Waste Bin"))
+                        {
+                            objectHolderScript.DestroyBox();
+                            holdingObject = false;
                         }
                         else
                         {
