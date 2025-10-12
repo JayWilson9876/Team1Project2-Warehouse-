@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
+using Unity.Cinemachine;
+using UnityEditor;
 
 public class Box : MonoBehaviour
 {
@@ -12,15 +15,20 @@ public class Box : MonoBehaviour
     public GameObject openBox;
     public GameObject closedBox;
     Rigidbody rb;
-    public GameManager gameManager;
-    List<GameObject> objectsNeeded;
+    GameObject gameManager;
+    public List<GameObject> objectsNeeded;
+    public GameObject[] itemsArray;
+    public GameObject[] objectsNeededArray;
+    public GameObject itemPrefab;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         closedBox.SetActive(false);
-        objectsNeeded = gameManager.CreateNewList();
+        gameManager = GameObject.Find("GameManager");
+        objectsNeeded = gameManager.GetComponent<GameManager>().CreateNewList();
+        print(gameObject.name + objectsNeeded);
     }
 
     public void PlaceItemInBox(GameObject item)
@@ -44,9 +52,13 @@ public class Box : MonoBehaviour
             openBox.SetActive(false);
             closedBox.SetActive(true);
             rb.isKinematic = false;
+            itemsArray = items.ToArray();
+            objectsNeededArray = objectsNeeded.ToArray();
+            Array.Sort(itemsArray, (a, b) => a.name.CompareTo(b.name));
+            Array.Sort(objectsNeededArray, (a, b) => a.name.CompareTo(b.name));
             if (gameObject.tag == "Open Box 1")
             {
-                if (items.All(objectsNeeded.Contains))
+                if (CheckLists())
                 {
                     gameObject.tag = "Correct Box 1";
                 }
@@ -57,7 +69,7 @@ public class Box : MonoBehaviour
             }
             else if (gameObject.tag == "Open Box 2")
             {
-                if (items.All(objectsNeeded.Contains))
+                if (CheckLists())
                 {
                     gameObject.tag = "Correct Box 2";
                 }
@@ -68,7 +80,7 @@ public class Box : MonoBehaviour
             }
             else if (gameObject.tag == "Open Box 3")
             {
-                if (items.All(objectsNeeded.Contains))
+                if (CheckLists())
                 {
                     gameObject.tag = "Correct Box 3";
                 }
@@ -83,5 +95,17 @@ public class Box : MonoBehaviour
         item.transform.localScale = new Vector3(0.125f, 0.25f, 0.125f);
         item.transform.eulerAngles = new Vector3(0, 0, 0);
         item.tag = "Untagged";
+    }
+
+    bool CheckLists()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (itemsArray[i].name != objectsNeededArray[i].name)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

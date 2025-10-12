@@ -14,24 +14,24 @@ public class GameManager : MonoBehaviour
         List<GameObject> objectsNeeded = new List<GameObject>();
         if (currentLevel.name == "LVL 2")
         {
-            index = Random.Range(3, 5);
+            index = Random.Range(3, 6);
             objectsNeeded.Add(items[index]);
-            index = Random.Range(3, 5);
+            index = Random.Range(3, 6);
             objectsNeeded.Add(items[index]);
-            index = Random.Range(3, 5);
+            index = Random.Range(3, 6);
             objectsNeeded.Add(items[index]);
-            index = Random.Range(3, 5);
+            index = Random.Range(3, 6);
             objectsNeeded.Add(items[index]);
         }
         else
         {
-            index = Random.Range(0, 2);
+            index = Random.Range(0, 3);
             objectsNeeded.Add(items[index]);
-            index = Random.Range(0, 2);
+            index = Random.Range(0, 3);
             objectsNeeded.Add(items[index]);
-            index = Random.Range(0, 2);
+            index = Random.Range(0, 3);
             objectsNeeded.Add(items[index]);
-            index = Random.Range(0, 2);
+            index = Random.Range(0, 3);
             objectsNeeded.Add(items[index]);
         }
         return objectsNeeded;

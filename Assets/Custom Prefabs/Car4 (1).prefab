@@ -51,6 +51,7 @@ MonoBehaviour:
   canBePickedUp: 0
   targetPosition: {x: 0, y: 0, z: 0}
   spawnerName: Car2Spawner
+  originalPrefab: {fileID: 1177732314582652899}
 --- !u!54 &6752780732039574109
 Rigidbody:
   m_ObjectHideFlags: 0

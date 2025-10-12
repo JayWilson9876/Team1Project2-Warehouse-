@@ -99,6 +99,7 @@ MonoBehaviour:
   canBePickedUp: 0
   targetPosition: {x: 0, y: 0, z: 0}
   spawnerName: Car1Spawner
+  originalPrefab: {fileID: 6350031786122012045}
 --- !u!1001 &8133711976581069028
 PrefabInstance:
   m_ObjectHideFlags: 0
