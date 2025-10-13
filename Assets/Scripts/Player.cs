@@ -1,4 +1,5 @@
 using System.Collections;
+using System.ComponentModel.Design;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
     public GameObject box1Spawner;
     public GameObject box2Spawner;
     public GameObject box3Spawner;
+    int boxesNeeded;
 
     void Start()
     {
@@ -62,6 +64,18 @@ public class Player : MonoBehaviour
         truck1Set3.SetActive(false);
         truck2Set3.SetActive(false);
         truck3Set3.SetActive(false);
+        if (currentScene.name == "LVL 2")
+        {
+            boxesNeeded = 2;
+        }
+        else if (currentScene.name == "LVL 3")
+        {
+            boxesNeeded = 3;
+        }
+        else
+        {
+            boxesNeeded = 1;
+        }
     }
 
     void Update()
@@ -97,7 +111,7 @@ public class Player : MonoBehaviour
                         interactText.text = "Clock In";
                         interactText.enabled = true;
                     }
-                    else if (clockedIn && !done && truck1Capacity == 3 && truck2Capacity == 3 && truck3Capacity == 3)
+                    else if (clockedIn && !done && truck1Capacity == boxesNeeded && truck2Capacity == boxesNeeded && truck3Capacity == boxesNeeded)
                     {
                         canInteract = true;
                         interactText.text = "Clock Out";
@@ -173,7 +187,7 @@ public class Player : MonoBehaviour
                 {
                     if (Physics.Raycast(ray, out hit, 2.5f))
                     {
-                        if (hit.collider.CompareTag("Pickup") || hit.collider.CompareTag("Closed Box 1") || hit.collider.CompareTag("Closed Box 2") || hit.collider.CompareTag("Closed Box 3") || hit.collider.CompareTag("Incorrect Box 1") || hit.collider.CompareTag("Incorrect Box 2") || hit.collider.CompareTag("Incorrect Box 3"))
+                        if (hit.collider.CompareTag("Pickup") || hit.collider.CompareTag("Correct Box 1") || hit.collider.CompareTag("Correct Box 2") || hit.collider.CompareTag("Correct Box 3") || hit.collider.CompareTag("Incorrect Box 1") || hit.collider.CompareTag("Incorrect Box 2") || hit.collider.CompareTag("Incorrect Box 3"))
                         {
                             objectHolderScript.PickUpItem(hit.transform.gameObject);
                             holdingObject = true;
@@ -244,7 +258,7 @@ public class Player : MonoBehaviour
                             holdingObject = false;
                             interactText.enabled = false;
                         }
-                        else if (hit.collider.CompareTag("Truck 1") && objectHolderScript.currentItem.CompareTag("Correct Box 1") && truck1Capacity < 3)
+                        else if (hit.collider.CompareTag("Truck 1") && objectHolderScript.currentItem.CompareTag("Correct Box 1") && truck1Capacity < boxesNeeded)
                         {
                             truck1Capacity++;
                             objectHolderScript.DestroyBox();
@@ -252,12 +266,28 @@ public class Player : MonoBehaviour
                             if (truck1Capacity == 1)
                             {
                                 truck1Set1.SetActive(true);
-                                box1Spawner.GetComponent<Spawner>().Spawn();
+                                if (truck1Capacity < boxesNeeded)
+                                {
+                                    box1Spawner.GetComponent<Spawner>().Spawn();
+                                }
+                                else
+                                {
+                                    truck1Door1.transform.eulerAngles = new Vector3(0, 0, 0);
+                                    truck1Door2.transform.eulerAngles = new Vector3(0, 0, 0);
+                                }
                             }
                             else if (truck1Capacity == 2)
                             {
                                 truck1Set2.SetActive(true);
-                                box1Spawner.GetComponent<Spawner>().Spawn();
+                                if (truck1Capacity < boxesNeeded)
+                                {
+                                    box1Spawner.GetComponent<Spawner>().Spawn();
+                                }
+                                else
+                                {
+                                    truck1Door1.transform.eulerAngles = new Vector3(0, 0, 0);
+                                    truck1Door2.transform.eulerAngles = new Vector3(0, 0, 0);
+                                }
                             }
                             else if (truck1Capacity == 3)
                             {
@@ -266,7 +296,7 @@ public class Player : MonoBehaviour
                                 truck1Door2.transform.eulerAngles = new Vector3(0, 0, 0);
                             }
                         }
-                        else if (hit.collider.CompareTag("Truck 2") && objectHolderScript.currentItem.CompareTag("Correct Box 2") && truck2Capacity < 3)
+                        else if (hit.collider.CompareTag("Truck 2") && objectHolderScript.currentItem.CompareTag("Correct Box 2") && truck2Capacity < boxesNeeded)
                         {
                             truck2Capacity++;
                             objectHolderScript.DestroyBox();
@@ -274,21 +304,37 @@ public class Player : MonoBehaviour
                             if (truck2Capacity == 1)
                             {
                                 truck2Set1.SetActive(true);
-                                box2Spawner.GetComponent<Spawner>().Spawn();
+                                if (truck2Capacity < boxesNeeded)
+                                {
+                                    box2Spawner.GetComponent<Spawner>().Spawn();
+                                }
+                                else
+                                {
+                                    truck2Door1.transform.eulerAngles = new Vector3(0, 0, 0);
+                                    truck2Door2.transform.eulerAngles = new Vector3(0, 0, 0);
+                                }
                             }
                             else if (truck2Capacity == 2)
                             {
-                                truck2Set2.SetActive(true);
-                                box2Spawner.GetComponent<Spawner>().Spawn();
+                                truck1Set2.SetActive(true);
+                                if (truck2Capacity < boxesNeeded)
+                                {
+                                    box2Spawner.GetComponent<Spawner>().Spawn();
+                                }
+                                else
+                                {
+                                    truck2Door1.transform.eulerAngles = new Vector3(0, 0, 0);
+                                    truck2Door2.transform.eulerAngles = new Vector3(0, 0, 0);
+                                }
                             }
-                            if (truck2Capacity == 3)
+                            else if (truck2Capacity == 3)
                             {
                                 truck2Set3.SetActive(true);
                                 truck2Door1.transform.eulerAngles = new Vector3(0, 0, 0);
                                 truck2Door2.transform.eulerAngles = new Vector3(0, 0, 0);
                             }
                         }
-                        else if (hit.collider.CompareTag("Truck 3") && objectHolderScript.currentItem.CompareTag("Correct Box 3") && truck3Capacity < 3)
+                        else if (hit.collider.CompareTag("Truck 3") && objectHolderScript.currentItem.CompareTag("Correct Box 3") && truck3Capacity < boxesNeeded)
                         {
                             truck3Capacity++;
                             objectHolderScript.DestroyBox();
@@ -296,12 +342,28 @@ public class Player : MonoBehaviour
                             if (truck3Capacity == 1)
                             {
                                 truck3Set1.SetActive(true);
-                                box3Spawner.GetComponent<Spawner>().Spawn();
+                                if (truck3Capacity < boxesNeeded)
+                                {
+                                    box3Spawner.GetComponent<Spawner>().Spawn();
+                                }
+                                else
+                                {
+                                    truck3Door1.transform.eulerAngles = new Vector3(0, 0, 0);
+                                    truck3Door2.transform.eulerAngles = new Vector3(0, 0, 0);
+                                }
                             }
                             else if (truck3Capacity == 2)
                             {
                                 truck3Set2.SetActive(true);
-                                box3Spawner.GetComponent<Spawner>().Spawn();
+                                if (truck3Capacity < boxesNeeded)
+                                {
+                                    box3Spawner.GetComponent<Spawner>().Spawn();
+                                }
+                                else
+                                {
+                                    truck3Door1.transform.eulerAngles = new Vector3(0, 0, 0);
+                                    truck3Door2.transform.eulerAngles = new Vector3(0, 0, 0);
+                                }
                             }
                             else if (truck3Capacity == 3)
                             {
