@@ -165,8 +165,12 @@ MonoBehaviour:
   slot4: {fileID: 9106042836912120875}
   openBox: {fileID: 7963199544215058447}
   closedBox: {fileID: 8820303082063918097}
-  gameManager: {fileID: 0}
   objectsNeeded: []
+  itemsArray: []
+  objectsNeededArray: []
+  itemPrefab: {fileID: 0}
+  faultyMaterial: {fileID: 2100000, guid: 5db09e65082a0f44ca2f87263b9231c8, type: 2}
+  boxRenderer: {fileID: 7019139964807697860}
 --- !u!1 &7854898191123165965
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +356,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2f72bea8a466ce048bfff89fb8813aaf, type: 2}
+  - {fileID: 2100000, guid: 5db09e65082a0f44ca2f87263b9231c8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

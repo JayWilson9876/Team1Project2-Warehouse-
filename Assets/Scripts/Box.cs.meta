@@ -1,2 +1,19 @@
 fileFormatVersion: 2
 guid: 5385a0e49dcd6a043a354b0491d3f907
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - slot1: {instanceID: 0}
+  - slot2: {instanceID: 0}
+  - slot3: {instanceID: 0}
+  - slot4: {instanceID: 0}
+  - openBox: {instanceID: 0}
+  - closedBox: {instanceID: 0}
+  - itemPrefab: {instanceID: 0}
+  - faultyMaterial: {fileID: 2100000, guid: 5db09e65082a0f44ca2f87263b9231c8, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

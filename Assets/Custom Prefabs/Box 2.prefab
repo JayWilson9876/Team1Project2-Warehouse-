@@ -341,8 +341,12 @@ MonoBehaviour:
   slot4: {fileID: 6184312861737593391}
   openBox: {fileID: 347135283249056389}
   closedBox: {fileID: 215919969768645418}
-  gameManager: {fileID: 0}
   objectsNeeded: []
+  itemsArray: []
+  objectsNeededArray: []
+  itemPrefab: {fileID: 0}
+  faultyMaterial: {fileID: 2100000, guid: 5db09e65082a0f44ca2f87263b9231c8, type: 2}
+  boxRenderer: {fileID: 1873469277505749759}
 --- !u!1 &8211903400835227849
 GameObject:
   m_ObjectHideFlags: 0

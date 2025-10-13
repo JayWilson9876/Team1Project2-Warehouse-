@@ -1,9 +1,10 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
 using Unity.Cinemachine;
 using UnityEditor;
+using UnityEngine;
+using UnityEngine.VFX;
 
 public class Box : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class Box : MonoBehaviour
     public GameObject[] itemsArray;
     public GameObject[] objectsNeededArray;
     public GameObject itemPrefab;
+    public Material faultyMaterial;
+    public Renderer boxRenderer;
+
 
     void Start()
     {
@@ -28,7 +32,6 @@ public class Box : MonoBehaviour
         closedBox.SetActive(false);
         gameManager = GameObject.Find("GameManager");
         objectsNeeded = gameManager.GetComponent<GameManager>().CreateNewList();
-        print(gameObject.name + objectsNeeded);
     }
 
     public void PlaceItemInBox(GameObject item)
@@ -56,6 +59,9 @@ public class Box : MonoBehaviour
             objectsNeededArray = objectsNeeded.ToArray();
             Array.Sort(itemsArray, (a, b) => a.name.CompareTo(b.name));
             Array.Sort(objectsNeededArray, (a, b) => a.name.CompareTo(b.name));
+            Material[] currentMaterial = boxRenderer.materials;
+            Material[] newMaterial = new Material[currentMaterial.Length + 1];
+            newMaterial[0] = currentMaterial[0];
             if (gameObject.tag == "Open Box 1")
             {
                 if (CheckLists())
@@ -65,6 +71,8 @@ public class Box : MonoBehaviour
                 else
                 {
                     gameObject.tag = "Incorrect Box 1";
+                    newMaterial[newMaterial.Length - 1] = faultyMaterial;
+                    boxRenderer.materials = newMaterial;
                 }
             }
             else if (gameObject.tag == "Open Box 2")
@@ -76,6 +84,8 @@ public class Box : MonoBehaviour
                 else
                 {
                     gameObject.tag = "Incorrect Box 2";
+                    newMaterial[newMaterial.Length - 1] = faultyMaterial;
+                    boxRenderer.materials = newMaterial;
                 }
             }
             else if (gameObject.tag == "Open Box 3")
@@ -87,6 +97,8 @@ public class Box : MonoBehaviour
                 else
                 {
                     gameObject.tag = "Incorrect Box 3";
+                    newMaterial[newMaterial.Length - 1] = faultyMaterial;
+                    boxRenderer.materials = newMaterial;
                 }
             }
             gameObject.layer = 3;
