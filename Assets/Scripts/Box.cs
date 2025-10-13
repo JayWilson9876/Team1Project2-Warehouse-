@@ -24,14 +24,13 @@ public class Box : MonoBehaviour
     public Material faultyMaterial;
     public Renderer boxRenderer;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
         closedBox.SetActive(false);
         gameManager = GameObject.Find("GameManager");
-        objectsNeeded = gameManager.GetComponent<GameManager>().CreateNewList();
+        objectsNeeded = gameManager.GetComponent<GameManager>().CreateNewList(gameObject.tag);
     }
 
     public void PlaceItemInBox(GameObject item)
