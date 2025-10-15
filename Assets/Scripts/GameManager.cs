@@ -66,21 +66,6 @@ public class GameManager : MonoBehaviour
                 loadedSprite = Resources.Load<Sprite>(sprite3Name);
                 needs[i].sprite = loadedSprite;
             }
-            if (objectsNeeded[i].name == "Cow")
-            {
-                loadedSprite = Resources.Load<Sprite>(sprite1Name);
-                needs[i].sprite = loadedSprite;
-            }
-            else if (objectsNeeded[i].name == "Cat")
-            {
-                loadedSprite = Resources.Load<Sprite>(sprite2Name);
-                needs[i].sprite = loadedSprite;
-            }
-            else if (objectsNeeded[i].name == "Chicken")
-            {
-                loadedSprite = Resources.Load<Sprite>(sprite3Name);
-                needs[i].sprite = loadedSprite;
-            }
             else if (objectsNeeded[i].name == "Car7 (1)(Clone)")
             {
                 loadedSprite = Resources.Load<Sprite>(sprite1Name);
@@ -96,17 +81,17 @@ public class GameManager : MonoBehaviour
                 loadedSprite = Resources.Load<Sprite>(sprite3Name);
                 needs[i].sprite = loadedSprite;
             }
-            else if (objectsNeeded[i].name == "Car1")
+            else if (objectsNeeded[i].name == "Car1(Clone)")
             {
                 loadedSprite = Resources.Load<Sprite>(sprite1Name);
                 needs[i].sprite = loadedSprite;
             }
-            else if (objectsNeeded[i].name == "Car2")
+            else if (objectsNeeded[i].name == "Car2(Clone)")
             {
                 loadedSprite = Resources.Load<Sprite>(sprite2Name);
                 needs[i].sprite = loadedSprite;
             }
-            else if (objectsNeeded[i].name == "LLama")
+            else if (objectsNeeded[i].name == "LLama(Clone)")
             {
                 loadedSprite = Resources.Load<Sprite>(sprite3Name);
                 needs[i].sprite = loadedSprite;
