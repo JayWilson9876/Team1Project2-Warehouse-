@@ -374,7 +374,19 @@ public class Player : MonoBehaviour
                         }
                         else if (hit.collider.CompareTag("Waste Bin"))
                         {
-                            objectHolderScript.DestroyBox();
+                            if (objectHolderScript.currentItem.CompareTag("Incorrect Box 1"))
+                            {
+                                box1Spawner.GetComponent<Spawner>().Spawn();
+                            }
+                            else if (objectHolderScript.currentItem.CompareTag("Incorrect Box 2"))
+                            {
+                                box2Spawner.GetComponent<Spawner>().Spawn();
+                            }
+                            else if (objectHolderScript.currentItem.CompareTag("Incorrect Box 3"))
+                            {
+                                box3Spawner.GetComponent<Spawner>().Spawn();
+                            }
+                                objectHolderScript.DestroyBox();
                             holdingObject = false;
                         }
                         else
