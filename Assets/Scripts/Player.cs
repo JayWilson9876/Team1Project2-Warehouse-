@@ -179,6 +179,11 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            SceneManager.LoadScene("LVL 2");
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             if (canInteract)
