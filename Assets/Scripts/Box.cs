@@ -5,6 +5,7 @@ using Unity.Cinemachine;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.UI;
 
 public class Box : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class Box : MonoBehaviour
     public GameObject itemPrefab;
     public Material faultyMaterial;
     public Renderer boxRenderer;
+    Image itemSlot1;
+    Image itemSlot2;
+    Image itemSlot3;
+    Image itemSlot4;
+    public string itemSlot1Find;
+    public string itemSlot2Find;
+    public string itemSlot3Find;
+    public string itemSlot4Find;
 
     void Start()
     {
@@ -31,26 +40,35 @@ public class Box : MonoBehaviour
         closedBox.SetActive(false);
         gameManager = GameObject.Find("GameManager");
         objectsNeeded = gameManager.GetComponent<GameManager>().CreateNewList(gameObject.tag);
+        itemSlot1 = GameObject.Find(itemSlot1Find).GetComponent<Image>();
+        itemSlot2 = GameObject.Find(itemSlot2Find).GetComponent<Image>();
+        itemSlot3 = GameObject.Find(itemSlot3Find).GetComponent<Image>();
+        itemSlot4 = GameObject.Find(itemSlot4Find).GetComponent<Image>();
     }
 
     public void PlaceItemInBox(GameObject item)
     {
         items.Add(item);
+        Sprite loadedSprite = Resources.Load<Sprite>(item.GetComponent<Item>().spriteName);
         if (items.Count == 1)
         {
             item.transform.SetParent(slot1.transform);
+            itemSlot1.sprite = loadedSprite;
         }
         if (items.Count == 2)
         {
             item.transform.SetParent(slot2.transform);
+            itemSlot2.sprite = loadedSprite;
         }
         if (items.Count == 3)
         {
             item.transform.SetParent(slot3.transform);
+            itemSlot3.sprite = loadedSprite;
         }
         if (items.Count == 4)
         {
             item.transform.SetParent(slot4.transform);
+            itemSlot4.sprite = loadedSprite;
             openBox.SetActive(false);
             closedBox.SetActive(true);
             rb.isKinematic = false;

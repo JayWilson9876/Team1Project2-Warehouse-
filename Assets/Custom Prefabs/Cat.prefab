@@ -153,4 +153,4 @@ MonoBehaviour:
   canBePickedUp: 0
   targetPosition: {x: -3.383999, y: 0.4229999, z: 2.172005}
   spawnerName: CatSpawner
-  originalPrefab: {fileID: 42520594165567166}
+  spriteName: LVL 1 Cat

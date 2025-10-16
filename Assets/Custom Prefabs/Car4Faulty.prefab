@@ -51,6 +51,7 @@ MonoBehaviour:
   canBePickedUp: 0
   targetPosition: {x: -3.383999, y: 0.5587493, z: 2.172005}
   spawnerName: Car2Spawner
+  spriteName: LVL 2 Car
 --- !u!54 &6752780732039574109
 Rigidbody:
   m_ObjectHideFlags: 0

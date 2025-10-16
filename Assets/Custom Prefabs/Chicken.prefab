@@ -153,4 +153,4 @@ MonoBehaviour:
   canBePickedUp: 0
   targetPosition: {x: -8.402998, y: 0.42000008, z: 3.2850037}
   spawnerName: ChickenSpawner
-  originalPrefab: {fileID: 1870345420684718544}
+  spriteName: LVL 1 Chick

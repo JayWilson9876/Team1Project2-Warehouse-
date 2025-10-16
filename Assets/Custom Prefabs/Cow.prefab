@@ -153,3 +153,4 @@ MonoBehaviour:
   canBePickedUp: 0
   targetPosition: {x: 1.628001, y: 0.4159999, z: 3.2800064}
   spawnerName: CowSpawner
+  spriteName: LVL 1 Cow

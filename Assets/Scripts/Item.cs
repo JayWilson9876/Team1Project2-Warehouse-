@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     public string spawnerName;
     Collider itemCollider;
     Rigidbody rb;
+    public string spriteName;
 
     void Start()
     {

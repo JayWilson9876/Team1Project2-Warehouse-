@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 3675897010853768116}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.742369, y: 0.00000002117443, z: 12.13781}
+  m_LocalPosition: {x: 11.230442, y: -0.0067665577, z: 4.050437}
   m_LocalScale: {x: 4, y: 2, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -292,10 +292,10 @@ MonoBehaviour:
   itemPrefab: {fileID: 0}
   faultyMaterial: {fileID: 2100000, guid: 5db09e65082a0f44ca2f87263b9231c8, type: 2}
   boxRenderer: {fileID: 2524398041947376729}
-  need1: {fileID: 0}
-  need2: {fileID: 0}
-  need3: {fileID: 0}
-  need4: {fileID: 0}
+  itemSlot1Find: Box1Item1
+  itemSlot2Find: Box1Item2
+  itemSlot3Find: Box1Item3
+  itemSlot4Find: Box1Item4
 --- !u!1 &4037629712419827084
 GameObject:
   m_ObjectHideFlags: 0
