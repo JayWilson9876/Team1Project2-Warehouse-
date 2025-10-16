@@ -102107,8 +102107,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  sprite1Name: LVL 3 Car
-  sprite2Name: LVL 3 Car 2
+  sprite1Name: LVL 3 Car 2
+  sprite2Name: LVL 3 Car
   sprite3Name: LVL 3 Lama
 --- !u!4 &1936030302
 Transform:
