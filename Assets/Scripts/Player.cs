@@ -428,7 +428,7 @@ public class Player : MonoBehaviour
         {
             if (!doorOpen)
             {
-                door.transform.eulerAngles = new Vector3(0, -180, 0);
+                door.GetComponent<Door>().MoveDoor(door.GetComponent<Door>().openTarget);
                 doorOpen = true;
             }
         }
