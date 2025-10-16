@@ -261,6 +261,7 @@ public class Player : MonoBehaviour
                         else if (hit.collider.CompareTag("Truck 1") && objectHolderScript.currentItem.CompareTag("Correct Box 1") && truck1Capacity < boxesNeeded)
                         {
                             truck1Capacity++;
+                            currentBoxScript.ResetSprites();
                             objectHolderScript.DestroyBox();
                             holdingObject = false;
                             if (truck1Capacity == 1)
@@ -299,6 +300,7 @@ public class Player : MonoBehaviour
                         else if (hit.collider.CompareTag("Truck 2") && objectHolderScript.currentItem.CompareTag("Correct Box 2") && truck2Capacity < boxesNeeded)
                         {
                             truck2Capacity++;
+                            currentBoxScript.ResetSprites();
                             objectHolderScript.DestroyBox();
                             holdingObject = false;
                             if (truck2Capacity == 1)
@@ -337,6 +339,7 @@ public class Player : MonoBehaviour
                         else if (hit.collider.CompareTag("Truck 3") && objectHolderScript.currentItem.CompareTag("Correct Box 3") && truck3Capacity < boxesNeeded)
                         {
                             truck3Capacity++;
+                            currentBoxScript.ResetSprites();
                             objectHolderScript.DestroyBox();
                             holdingObject = false;
                             if (truck3Capacity == 1)
@@ -377,16 +380,19 @@ public class Player : MonoBehaviour
                             if (objectHolderScript.currentItem.CompareTag("Incorrect Box 1"))
                             {
                                 box1Spawner.GetComponent<Spawner>().Spawn();
+                                currentBoxScript.ResetSprites();
                             }
                             else if (objectHolderScript.currentItem.CompareTag("Incorrect Box 2"))
                             {
                                 box2Spawner.GetComponent<Spawner>().Spawn();
+                                currentBoxScript.ResetSprites();
                             }
                             else if (objectHolderScript.currentItem.CompareTag("Incorrect Box 3"))
                             {
                                 box3Spawner.GetComponent<Spawner>().Spawn();
+                                currentBoxScript.ResetSprites();
                             }
-                                objectHolderScript.DestroyBox();
+                            objectHolderScript.DestroyBox();
                             holdingObject = false;
                         }
                         else

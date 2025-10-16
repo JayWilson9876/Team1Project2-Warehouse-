@@ -24,10 +24,10 @@ public class Box : MonoBehaviour
     public GameObject itemPrefab;
     public Material faultyMaterial;
     public Renderer boxRenderer;
-    Image itemSlot1;
-    Image itemSlot2;
-    Image itemSlot3;
-    Image itemSlot4;
+    public Image itemSlot1;
+    public Image itemSlot2;
+    public Image itemSlot3;
+    public Image itemSlot4;
     public string itemSlot1Find;
     public string itemSlot2Find;
     public string itemSlot3Find;
@@ -136,5 +136,13 @@ public class Box : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void ResetSprites()
+    {
+        itemSlot1.sprite = null;
+        itemSlot2.sprite = null;
+        itemSlot3.sprite = null;
+        itemSlot4.sprite = null;
     }
 }
