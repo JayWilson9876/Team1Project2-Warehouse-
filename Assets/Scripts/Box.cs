@@ -121,7 +121,7 @@ public class Box : MonoBehaviour
             gameObject.layer = 3;
         }
         item.transform.localPosition = new Vector3(0, 0, 0);
-        item.transform.localScale = new Vector3(0.125f, 0.25f, 0.125f);
+        item.transform.localScale = new Vector3(0.04f, 0.08f, 0.04f);
         item.transform.eulerAngles = new Vector3(0, 0, 0);
         item.tag = "Untagged";
     }
