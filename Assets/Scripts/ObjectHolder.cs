@@ -5,6 +5,7 @@ public class ObjectHolder : MonoBehaviour
     public Transform parent;
     public GameObject currentItem;
     Rigidbody currentRigidBody;
+    public Player player;
 
     public void PickUpItem(GameObject item)
     {
@@ -37,5 +38,17 @@ public class ObjectHolder : MonoBehaviour
         Destroy(currentItem);
         currentItem = null;
         currentRigidBody = null;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Floor"))
+        {
+            if (player.holdingObject)
+            {
+                DropItem();
+                player.holdingObject = false;
+            }
+        }
     }
 }

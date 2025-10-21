@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    bool holdingObject = false;
+    public bool holdingObject = false;
     public ObjectHolder objectHolderScript;
     public Camera playerCamera;
     bool canInteract = false;
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     float timeHours = 0;
     bool clockedIn = false;
     bool done = false;
-    Scene currentScene;
+    public Scene currentScene;
     public GameObject truck1Set1;
     public GameObject truck2Set1;
     public GameObject truck3Set1;
@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     public GameObject truck3Door2;
     Box currentBoxScript;
     public LayerMask itemLayer;
+    public LayerMask objectHolderLayer;
     Item currentItemScript;
     public GameObject door;
     bool doorOpen = false;
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Ray ray = playerCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 2.5f))
+        if (Physics.Raycast(ray, out hit, 2.5f, ~objectHolderLayer))
         {
             if (!holdingObject)
             {
@@ -130,7 +131,7 @@ public class Player : MonoBehaviour
             }
             else
             {
-                if (Physics.Raycast(ray, out hit, 2.5f, ~itemLayer))
+                if (Physics.Raycast(ray, out hit, 2.5f, ~itemLayer | ~objectHolderLayer))
                 {
                     if ((hit.collider.CompareTag("Open Box 1")) || (hit.collider.CompareTag("Open Box 2")) || (hit.collider.CompareTag("Open Box 3")))
                     {
@@ -190,7 +191,7 @@ public class Player : MonoBehaviour
             {
                 if (!holdingObject)
                 {
-                    if (Physics.Raycast(ray, out hit, 2.5f))
+                    if (Physics.Raycast(ray, out hit, 2.5f, ~objectHolderLayer))
                     {
                         if (hit.collider.CompareTag("Pickup") || hit.collider.CompareTag("Correct Box 1") || hit.collider.CompareTag("Correct Box 2") || hit.collider.CompareTag("Correct Box 3") || hit.collider.CompareTag("Incorrect Box 1") || hit.collider.CompareTag("Incorrect Box 2") || hit.collider.CompareTag("Incorrect Box 3"))
                         {
@@ -255,7 +256,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    if (Physics.Raycast(ray, out hit, 2.5f, ~itemLayer))
+                    if (Physics.Raycast(ray, out hit, 2.5f, ~itemLayer | ~objectHolderLayer))
                     {
                         if ((objectHolderScript.currentItem.CompareTag("Pickup")) && (hit.collider.CompareTag("Open Box 1") || hit.collider.CompareTag("Open Box 2") || hit.collider.CompareTag("Open Box 3")))
                         {

@@ -26,6 +26,7 @@ TagManager:
   - Incorrect Box 2
   - Incorrect Box 3
   - Waste Bin
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Item
   - Water
   - UI
-  - 
+  - Object Holder
   - 
   - 
   - 
