@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn()
     {
-        int index = Random.Range(1, 5);
+        int index = Random.Range(1, 11);
         if (index == 1)
         {
             Instantiate(faultyItem, transform.position, transform.rotation);
