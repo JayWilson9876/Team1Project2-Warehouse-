@@ -11066,6 +11066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 193677091}
   currentItem: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &194249119
 GameObject:
   m_ObjectHideFlags: 0
@@ -73887,10 +73888,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc74db2956260d478950f8a4a606be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdingObject: 0
   objectHolderScript: {fileID: 193677092}
   playerCamera: {fileID: 1406785566}
   interactText: {fileID: 322874637}
   timerText: {fileID: 1260004087}
+  currentScene:
+    m_Handle: 0
   truck1Set1: {fileID: 1289737888}
   truck2Set1: {fileID: 965491756}
   truck3Set1: {fileID: 1947059056}
@@ -73909,6 +73913,9 @@ MonoBehaviour:
   itemLayer:
     serializedVersion: 2
     m_Bits: 8
+  objectHolderLayer:
+    serializedVersion: 2
+    m_Bits: 0
   door: {fileID: 822948676}
   item1Spawner: {fileID: 1741713896}
   item2Spawner: {fileID: 289767059}
