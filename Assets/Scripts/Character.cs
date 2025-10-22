@@ -14,9 +14,8 @@ public class Character : MonoBehaviour
     
     void Start()
     {
+        print("Started");
         currentLevel = playerScript.currentScene.name;
-        print(currentLevel);
-        print(currentLine);
         if (currentLine == 1)
         {
             Dialogue();
@@ -27,7 +26,6 @@ public class Character : MonoBehaviour
     {
         if (currentLevel == "Tutorial")
         {
-            print("Working");
             switch (currentLine)
             {
                 case 1:
