@@ -37882,7 +37882,7 @@ MonoBehaviour:
     m_Bits: 8
   objectHolderLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   door: {fileID: 1503180824}
   item1Spawner: {fileID: 1521600475}
   item2Spawner: {fileID: 910605998}
@@ -37890,7 +37890,7 @@ MonoBehaviour:
   box1Spawner: {fileID: 1360812047}
   box2Spawner: {fileID: 971232493}
   box3Spawner: {fileID: 316959997}
-  characterScript: {fileID: 0}
+  characterScript: {fileID: 350981436}
 --- !u!114 &1177447306
 MonoBehaviour:
   m_ObjectHideFlags: 0

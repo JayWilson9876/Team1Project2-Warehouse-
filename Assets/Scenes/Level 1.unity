@@ -22344,7 +22344,7 @@ MonoBehaviour:
   box1Spawner: {fileID: 820157298}
   box2Spawner: {fileID: 1317170525}
   box3Spawner: {fileID: 1730713493}
-  characterScript: {fileID: 0}
+  characterScript: {fileID: 1180171911}
 --- !u!4 &710470891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000013872234864, guid: da5894b154be11342a3fcfc401f7b4aa, type: 3}
