@@ -43,7 +43,6 @@ public class Player : MonoBehaviour
     public LayerMask objectHolderLayer;
     Item currentItemScript;
     public GameObject door;
-    bool doorOpen = false;
     public GameObject item1Spawner;
     public GameObject item2Spawner;
     public GameObject item3Spawner;
@@ -80,7 +79,7 @@ public class Player : MonoBehaviour
         }
         if (characterScript.currentLine == 1)
         {
-            characterScript.Dialogue();
+            characterScript.Invoke("Dialogue", 0.5f);
         }
     }
 
@@ -293,8 +292,7 @@ public class Player : MonoBehaviour
                                 if (characterScript.currentLine == 2)
                                 {
                                     characterScript.Dialogue();
-                                    door.GetComponent<Door>().MoveDoor(door.GetComponent<Door>().openTarget);
-                                    doorOpen = true;
+                                    OpenDoor();
                                 }
                                 else if (characterScript.currentLine == 3)
                                 {
@@ -303,15 +301,25 @@ public class Player : MonoBehaviour
                             }
                             else if (currentScene.name == "Level 1")
                             {
-
+                                if (characterScript.currentLine == 2)
+                                {
+                                    characterScript.Dialogue();
+                                    door.GetComponent<Door>().MoveDoor(door.GetComponent<Door>().openTarget);
+                                }
                             }
                             else if (currentScene.name == "LVL 2")
                             {
-
+                                if (characterScript.currentLine == 2)
+                                {
+                                    characterScript.Dialogue();
+                                }
                             }
                             else if (currentScene.name == "LVL 3")
                             {
-
+                                if (characterScript.currentLine == 2)
+                                {
+                                    characterScript.Dialogue();
+                                }
                             }
                         }
                     }
@@ -541,5 +549,10 @@ public class Player : MonoBehaviour
         }
 
         return $"{hoursString}:{minutesString}:{secondsString}";
+    }
+
+    public void OpenDoor()
+    {
+        door.GetComponent<Door>().MoveDoor(door.GetComponent<Door>().openTarget);
     }
 }
