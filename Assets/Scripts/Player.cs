@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     int boxesNeeded;
     public Character characterScript;
 
-    void Start()
+    void Awake()
     {
         interactText.enabled = false;
         currentScene = SceneManager.GetActiveScene();
@@ -507,10 +507,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Door"))
         {
-            if (characterScript.canTeleport)
-            {
-                characterScript.MoveInside();
-            }
+            characterScript.MoveInside();
         }
     }
 
