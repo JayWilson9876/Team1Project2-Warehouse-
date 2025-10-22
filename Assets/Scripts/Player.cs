@@ -77,10 +77,6 @@ public class Player : MonoBehaviour
         {
             boxesNeeded = 1;
         }
-        if (characterScript.currentLine == 1)
-        {
-            characterScript.Invoke("Dialogue", 0.5f);
-        }
     }
 
     void Update()
@@ -134,9 +130,12 @@ public class Player : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("Man"))
                 {
-                    canInteract = true;
-                    interactText.text = "Talk";
-                    interactText.enabled = true;
+                    if (characterScript.canTalk)
+                    {
+                        canInteract = true;
+                        interactText.text = "Talk";
+                        interactText.enabled = true;
+                    }
                 }
             }
             else

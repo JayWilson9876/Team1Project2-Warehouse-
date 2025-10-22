@@ -10,21 +10,29 @@ public class Character : MonoBehaviour
     public TextMeshProUGUI subtitles;
     public bool canTeleport = false;
     bool cancelClear = false;
+    public bool canTalk = true;
     
     void Start()
     {
         currentLevel = playerScript.currentScene.name;
+        print(currentLevel);
+        print(currentLine);
+        if (currentLine == 1)
+        {
+            Dialogue();
+        }
     }
 
     public void Dialogue()
     {
         if (currentLevel == "Tutorial")
         {
+            print("Working");
             switch (currentLine)
             {
                 case 1:
                     subtitles.text = "\"Hey kid, come here and talk with me\"";
-                    Invoke("ClearText", 10f);
+                    Invoke("ClearText", 5f);
                     break;
                 case 2:
                     subtitles.text = "\"Meet me inside and I'll walk you through the job\"";
@@ -56,6 +64,7 @@ public class Character : MonoBehaviour
                     subtitles.text = "\"Anyways, go ahead and clock in and get to work. Don't forget to clock out once you're done\"";
                     cancelClear = true;
                     Invoke("ClearText", 10f);
+                    canTalk = false;
                     break;
                 default:
                     break;
@@ -67,13 +76,14 @@ public class Character : MonoBehaviour
             {
                 case 1:
                     subtitles.text = "\"Hey, come here\"";
-                    cancelClear = true;
+                    Invoke("ClearText", 5f);
                     break;
                 case 2:
                     subtitles.text = "\"Boss said that if anything that looks strange comes off the of the conveyer belt, just bring it to me. Otherwise, just clock in and out like you did yesterday\"";
                     cancelClear = true;
                     Invoke("ClearText", 10f);
                     canTeleport = true;
+                    canTalk = false;
                     break;
                 default:
                     break;
@@ -85,8 +95,7 @@ public class Character : MonoBehaviour
             {
                 case 1:
                     subtitles.text = "\"Get over here\"";
-                    cancelClear = true;
-                    Invoke("ClearText", 10f);
+                    Invoke("ClearText", 5f);
                     break;
                 case 2:
                     subtitles.text = "\"We've got new inventory\"";
@@ -104,6 +113,7 @@ public class Character : MonoBehaviour
                     Invoke("ClearText", 10f);
                     playerScript.OpenDoor();
                     canTeleport = true;
+                    canTalk = false;
                     break;
                 default:
                     break;
@@ -115,8 +125,7 @@ public class Character : MonoBehaviour
             {
                 case 1:
                     subtitles.text = "\"Come here\"";
-                    cancelClear = true;
-                    Invoke("ClearText", 10f);
+                    Invoke("ClearText", 5f);
                     break;
                 case 2:
                     subtitles.text = "\"Last day of training, kid. Keep up the work and maybe we can let you in on the other parts of the business\"";
@@ -129,6 +138,7 @@ public class Character : MonoBehaviour
                     Invoke("ClearText", 10f);
                     playerScript.OpenDoor();
                     canTeleport = true;
+                    canTalk = false;
                     break;
                 default:
                     break;
