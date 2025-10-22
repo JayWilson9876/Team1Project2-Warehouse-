@@ -6,8 +6,9 @@ public class Character : MonoBehaviour
 {
     public Player playerScript;
     string currentLevel;
-    int currentLine = 0;
+    public int currentLine = 1;
     public TMP_Text subtitles;
+    public bool canTeleport = false;
     
     void Start()
     {
@@ -16,31 +17,34 @@ public class Character : MonoBehaviour
 
     public void Dialogue()
     {
-        currentLine++;
         if (currentLevel == "Tutorial")
         {
             switch (currentLine)
             {
                 case 1:
-                    subtitles.text = "Hey kid, come here and talk with me";
+                    subtitles.text = "\"Hey kid, come here and talk with me\"";
                     break;
                 case 2:
-                    subtitles.text = "Meet me inside and I'll walk you through the job";
+                    subtitles.text = "\"Meet me inside and I'll walk you through the job\"";
+                    canTeleport = true;
                     break;
                 case 3:
-                    subtitles.text = "Go ahead and clock in at the computer and come back to me when you're ready";
+                    subtitles.text = "\"Go ahead and clock in at the computer and come back to me when you're ready\"";
                     break;
                 case 4:
-                    subtitles.text = "Alrighty, you see those TV's Behind you? Those will tell you the next set of items that need to be loaded into the truck";
+                    subtitles.text = "\"Alrighty, you see those TV's Behind you? Those will tell you the next set of items that need to be loaded into the truck\"";
+                    Invoke("Dialogue", 10f);
                     break;
                 case 5:
-                    subtitles.text = "Go ahead and take the items as they come through the conveyer belt put them in the boxes in the middle of the room";
+                    subtitles.text = "\"Go ahead and take the items as they come through the conveyer belt put them in the boxes in the middle of the room\"";
+                    Invoke("Dialogue", 10f);
                     break;
                 case 6:
-                    subtitles.text = "Any faulty items just take to the bins in the corner";
+                    subtitles.text = "\"Any faulty items you find, just take to the bins in the corner\"";
+                    Invoke("Dialogue", 10f);
                     break;
                 case 7:
-                    subtitles.text = "Anyways, go ahead and clock in and get to work. Don't forget to clock out once you're done";
+                    subtitles.text = "\"Anyways, go ahead and clock in and get to work. Don't forget to clock out once you're done\"";
                     break;
                 default:
                     break;
@@ -51,10 +55,11 @@ public class Character : MonoBehaviour
             switch (currentLine)
             {
                 case 1:
-                    subtitles.text = "Hey, come here";
+                    subtitles.text = "\"Hey, come here\"";
                     break;
                 case 2:
-                    subtitles.text = "Boss said that if anything that looks strange comes off the of the conveyer, just bring it to me. Otherwise, just clock in and out like you did yesterday";
+                    subtitles.text = "\"Boss said that if anything that looks strange comes off the of the conveyer belt, just bring it to me. Otherwise, just clock in and out like you did yesterday\"";
+                    canTeleport = true;
                     break;
                 default:
                     break;
@@ -65,16 +70,20 @@ public class Character : MonoBehaviour
             switch (currentLine)
             {
                 case 1:
-                    subtitles.text = "Get over here";
+                    subtitles.text = "\"Get over here\"";
                     break;
                 case 2:
-                    subtitles.text = "We've got new inventory";
+                    subtitles.text = "\"We've got new inventory\"";
+                    Invoke("Dialogue", 10f);
                     break;
                 case 3:
-                    subtitles.text = "Just load them up the same way you did with the last batch";
+                    subtitles.text = "\"Just load them up the same way you did with the last batch\"";
+                    Invoke("Dialogue", 10f);
                     break;
                 case 4:
-                    subtitles.text = "If you come across anything that shouldn't be on the line, bring it to me, and don't ask questions";
+                    subtitles.text = "\"If you come across anything that shouldn't be on the line, bring it to me, and don't ask questions\"";
+                    Invoke("Dialogue", 10f);
+                    canTeleport = true;
                     break;
                 default:
                     break;
@@ -85,17 +94,27 @@ public class Character : MonoBehaviour
             switch (currentLine)
             {
                 case 1:
-                    subtitles.text = "Come here";
+                    subtitles.text = "\"Come here\"";
                     break;
                 case 2:
-                    subtitles.text = "Last day on the job, kid. Keep up the work and maybe we can let you in on the other parts of the business";
+                    subtitles.text = "\"Last day of training, kid. Keep up the work and maybe we can let you in on the other parts of the business\"";
+                    Invoke("Dialogue", 10f);
                     break;
                 case 3:
-                    subtitles.text = "New inventory batch again. Anyways, go ahead and get to work. We will contact you if something comes up";
+                    subtitles.text = "\"New inventory batch again. Anyways, go ahead and get to work. We will contact you if something comes up\"";
+                    Invoke("Dialogue", 10f);
+                    canTeleport = true;
                     break;
                 default:
                     break;
             }
         }
+        currentLine++;
+    }
+
+    public void MoveInside()
+    {
+        transform.position = new Vector3(8.69f, 0f, 6.72f);
+        canTeleport = true;
     }
 }

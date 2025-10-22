@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     public GameObject box2Spawner;
     public GameObject box3Spawner;
     int boxesNeeded;
+    public Character characterScript;
 
     void Start()
     {
@@ -76,6 +77,10 @@ public class Player : MonoBehaviour
         else
         {
             boxesNeeded = 1;
+        }
+        if (characterScript.currentLine == 1)
+        {
+            characterScript.Dialogue();
         }
     }
 
@@ -127,6 +132,12 @@ public class Player : MonoBehaviour
                         interactText.text = "Finish";
                         interactText.enabled = true;
                     }
+                }
+                else if (hit.collider.CompareTag("Man"))
+                {
+                    canInteract = true;
+                    interactText.text = "Talk";
+                    interactText.enabled = true;
                 }
             }
             else
@@ -210,19 +221,42 @@ public class Player : MonoBehaviour
                         {
                             if (!clockedIn)
                             {
-                                truck1Door1.GetComponent<Door>().MoveDoor(truck1Door1.GetComponent<Door>().openTarget);
-                                truck1Door2.GetComponent<Door>().MoveDoor(truck1Door2.GetComponent<Door>().openTarget);
-                                truck2Door1.GetComponent<Door>().MoveDoor(truck2Door1.GetComponent<Door>().openTarget);
-                                truck2Door2.GetComponent<Door>().MoveDoor(truck2Door2.GetComponent<Door>().openTarget);
-                                truck3Door1.GetComponent<Door>().MoveDoor(truck3Door1.GetComponent<Door>().openTarget);
-                                truck3Door2.GetComponent<Door>().MoveDoor(truck3Door2.GetComponent<Door>().openTarget);
-                                item1Spawner.GetComponent<Spawner>().Spawn();
-                                item2Spawner.GetComponent<Spawner>().Spawn();
-                                item3Spawner.GetComponent<Spawner>().Spawn();
-                                box1Spawner.GetComponent<Spawner>().Spawn();
-                                box2Spawner.GetComponent<Spawner>().Spawn();
-                                box3Spawner.GetComponent<Spawner>().Spawn();
-                                clockedIn = true;
+                                if (currentScene.name == "Tutorial")
+                                {
+                                    if (characterScript.currentLine == 4)
+                                    {
+                                        truck1Door1.GetComponent<Door>().MoveDoor(truck1Door1.GetComponent<Door>().openTarget);
+                                        truck1Door2.GetComponent<Door>().MoveDoor(truck1Door2.GetComponent<Door>().openTarget);
+                                        truck2Door1.GetComponent<Door>().MoveDoor(truck2Door1.GetComponent<Door>().openTarget);
+                                        truck2Door2.GetComponent<Door>().MoveDoor(truck2Door2.GetComponent<Door>().openTarget);
+                                        truck3Door1.GetComponent<Door>().MoveDoor(truck3Door1.GetComponent<Door>().openTarget);
+                                        truck3Door2.GetComponent<Door>().MoveDoor(truck3Door2.GetComponent<Door>().openTarget);
+                                        item1Spawner.GetComponent<Spawner>().Spawn();
+                                        item2Spawner.GetComponent<Spawner>().Spawn();
+                                        item3Spawner.GetComponent<Spawner>().Spawn();
+                                        box1Spawner.GetComponent<Spawner>().Spawn();
+                                        box2Spawner.GetComponent<Spawner>().Spawn();
+                                        box3Spawner.GetComponent<Spawner>().Spawn();
+                                        clockedIn = true;
+                                        characterScript.Dialogue();
+                                    }
+                                }
+                                else
+                                {
+                                    truck1Door1.GetComponent<Door>().MoveDoor(truck1Door1.GetComponent<Door>().openTarget);
+                                    truck1Door2.GetComponent<Door>().MoveDoor(truck1Door2.GetComponent<Door>().openTarget);
+                                    truck2Door1.GetComponent<Door>().MoveDoor(truck2Door1.GetComponent<Door>().openTarget);
+                                    truck2Door2.GetComponent<Door>().MoveDoor(truck2Door2.GetComponent<Door>().openTarget);
+                                    truck3Door1.GetComponent<Door>().MoveDoor(truck3Door1.GetComponent<Door>().openTarget);
+                                    truck3Door2.GetComponent<Door>().MoveDoor(truck3Door2.GetComponent<Door>().openTarget);
+                                    item1Spawner.GetComponent<Spawner>().Spawn();
+                                    item2Spawner.GetComponent<Spawner>().Spawn();
+                                    item3Spawner.GetComponent<Spawner>().Spawn();
+                                    box1Spawner.GetComponent<Spawner>().Spawn();
+                                    box2Spawner.GetComponent<Spawner>().Spawn();
+                                    box3Spawner.GetComponent<Spawner>().Spawn();
+                                    clockedIn = true;
+                                }
                             }
                             else
                             {
@@ -250,6 +284,34 @@ public class Player : MonoBehaviour
                                 {
 
                                 }
+                            }
+                        }
+                        else if (hit.collider.CompareTag("Man"))
+                        {
+                            if (currentScene.name == "Tutorial")
+                            {
+                                if (characterScript.currentLine == 2)
+                                {
+                                    characterScript.Dialogue();
+                                    door.GetComponent<Door>().MoveDoor(door.GetComponent<Door>().openTarget);
+                                    doorOpen = true;
+                                }
+                                else if (characterScript.currentLine == 3)
+                                {
+                                    characterScript.Dialogue();
+                                }
+                            }
+                            else if (currentScene.name == "Level 1")
+                            {
+
+                            }
+                            else if (currentScene.name == "LVL 2")
+                            {
+
+                            }
+                            else if (currentScene.name == "LVL 3")
+                            {
+
                             }
                         }
                     }
@@ -438,10 +500,9 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Door"))
         {
-            if (!doorOpen)
+            if (characterScript.canTeleport)
             {
-                door.GetComponent<Door>().MoveDoor(door.GetComponent<Door>().openTarget);
-                doorOpen = true;
+                characterScript.MoveInside();
             }
         }
     }
