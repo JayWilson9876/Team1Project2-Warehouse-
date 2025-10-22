@@ -87,7 +87,14 @@ public class Character : MonoBehaviour
                 case 1:
                     subtitles.text = "Come here";
                     break;
-                case
+                case 2:
+                    subtitles.text = "Last day on the job, kid. Keep up the work and maybe we can let you in on the other parts of the business";
+                    break;
+                case 3:
+                    subtitles.text = "New inventory batch again. Anyways, go ahead and get to work. We will contact you if something comes up";
+                    break;
+                default:
+                    break;
             }
         }
     }
