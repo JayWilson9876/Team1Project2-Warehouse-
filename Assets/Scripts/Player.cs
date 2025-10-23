@@ -370,15 +370,15 @@ public class Player : MonoBehaviour
                                 }
                                 else
                                 {
-                                    truck1Door1.GetComponent<Door>().MoveDoor(truck1Door1.GetComponent<Door>().openTarget);
-                                    truck1Door2.GetComponent<Door>().MoveDoor(truck1Door2.GetComponent<Door>().openTarget);
+                                    truck1Door1.GetComponent<Door>().MoveDoor(truck1Door1.GetComponent<Door>().closeTarget);
+                                    truck1Door2.GetComponent<Door>().MoveDoor(truck1Door2.GetComponent<Door>().closeTarget);
                                 }
                             }
                             else if (truck1Capacity == 3)
                             {
                                 truck1Set3.SetActive(true);
-                                truck1Door1.GetComponent<Door>().MoveDoor(truck1Door1.GetComponent<Door>().openTarget);
-                                truck1Door2.GetComponent<Door>().MoveDoor(truck1Door2.GetComponent<Door>().openTarget);
+                                truck1Door1.GetComponent<Door>().MoveDoor(truck1Door1.GetComponent<Door>().closeTarget);
+                                truck1Door2.GetComponent<Door>().MoveDoor(truck1Door2.GetComponent<Door>().closeTarget);
                             }
                         }
                         else if (hit.collider.CompareTag("Truck 2") && objectHolderScript.currentItem.CompareTag("Correct Box 2") && truck2Capacity < boxesNeeded)
