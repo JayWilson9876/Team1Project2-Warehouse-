@@ -77,7 +77,6 @@ public class Character : MonoBehaviour
                     break;
                 case 2:
                     subtitles.text = "\"Boss said that if anything that looks strange comes off the of the conveyer belt, just bring it to me. Otherwise, just clock in and out like you did yesterday\"";
-                    cancelClear = true;
                     Invoke("ClearText", 5f);
                     canTeleport = true;
                     canTalk = false;
@@ -106,7 +105,6 @@ public class Character : MonoBehaviour
                     break;
                 case 4:
                     subtitles.text = "\"If you come across anything that shouldn't be on the line, bring it to me, and don't ask questions\"";
-                    cancelClear = true;
                     Invoke("ClearText", 5f);
                     playerScript.OpenDoor();
                     canTeleport = true;
@@ -131,7 +129,6 @@ public class Character : MonoBehaviour
                     break;
                 case 3:
                     subtitles.text = "\"New inventory batch again. Anyways, go ahead and get to work. We will contact you if something comes up\"";
-                    cancelClear = true;
                     Invoke("ClearText", 5f);
                     playerScript.OpenDoor();
                     canTeleport = true;
@@ -164,5 +161,11 @@ public class Character : MonoBehaviour
         {
             cancelClear = false;
         }
+    }
+
+    public void ContrabandDialogue()
+    {
+        subtitles.text = "\"Nice catch, now get back to work\"";
+        Invoke("ClearText", 5f);
     }
 }

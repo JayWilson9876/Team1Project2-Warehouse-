@@ -18671,7 +18671,7 @@ GameObject:
   - component: {fileID: 592848458}
   - component: {fileID: 592848457}
   m_Layer: 0
-  m_Name: ChickenSpawner
+  m_Name: Spawner3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18691,6 +18691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 1870345420684718544, guid: 12c1cd26c3991864d93007cd4b8661c4, type: 3}
   faultyItem: {fileID: 1870345420684718544, guid: 3743616a39899c14bb7ca6d3ce4c720a, type: 3}
+  contrabandItem: {fileID: 6943172293901009296, guid: 49b362814badfa8498abc92208fe54e0, type: 3}
 --- !u!4 &592848458
 Transform:
   m_ObjectHideFlags: 0
@@ -25938,6 +25939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 3675897010853768116, guid: 6fa4cf19bdb89eb468c9b6a99d9ac24d, type: 3}
   faultyItem: {fileID: 3675897010853768116, guid: 6fa4cf19bdb89eb468c9b6a99d9ac24d, type: 3}
+  contrabandItem: {fileID: 3675897010853768116, guid: 6fa4cf19bdb89eb468c9b6a99d9ac24d, type: 3}
 --- !u!4 &820157300
 Transform:
   m_ObjectHideFlags: 0
@@ -42981,6 +42983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 8169297490157234413, guid: 58283f570f1c12b4da6624adc72b2cf9, type: 3}
   faultyItem: {fileID: 8169297490157234413, guid: 58283f570f1c12b4da6624adc72b2cf9, type: 3}
+  contrabandItem: {fileID: 8169297490157234413, guid: 58283f570f1c12b4da6624adc72b2cf9, type: 3}
 --- !u!4 &1317170527
 Transform:
   m_ObjectHideFlags: 0
@@ -57966,6 +57969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 6041812620353442504, guid: 8a1d04d967e7b4f4ebd8ce063b0b6736, type: 3}
   faultyItem: {fileID: 6041812620353442504, guid: 8a1d04d967e7b4f4ebd8ce063b0b6736, type: 3}
+  contrabandItem: {fileID: 6041812620353442504, guid: 8a1d04d967e7b4f4ebd8ce063b0b6736, type: 3}
 --- !u!4 &1730713495
 Transform:
   m_ObjectHideFlags: 0
@@ -59290,7 +59294,7 @@ GameObject:
   - component: {fileID: 1780223150}
   - component: {fileID: 1780223149}
   m_Layer: 0
-  m_Name: CatSpawner
+  m_Name: Spawner2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59310,6 +59314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 42520594165567166, guid: b8f29a6338986f04d8c8e2406dd162b9, type: 3}
   faultyItem: {fileID: 42520594165567166, guid: da7cf2fd4365d5c44af3026bf476fb05, type: 3}
+  contrabandItem: {fileID: 3044311539227786070, guid: 64b2ca4ef0437a140b9f8326e69de420, type: 3}
 --- !u!4 &1780223150
 Transform:
   m_ObjectHideFlags: 0
@@ -65594,7 +65599,7 @@ GameObject:
   - component: {fileID: 1951004175}
   - component: {fileID: 1951004174}
   m_Layer: 0
-  m_Name: CowSpawner
+  m_Name: Spawner1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65614,6 +65619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 3234389757833258266, guid: 1ac3e9efe64da90498c96a7020760073, type: 3}
   faultyItem: {fileID: 3234389757833258266, guid: a893a4f4202edec47a79b5774fa2a571, type: 3}
+  contrabandItem: {fileID: 1096083466177018521, guid: e193b7afd56e387478879bd8119753db, type: 3}
 --- !u!4 &1951004175
 Transform:
   m_ObjectHideFlags: 0
@@ -66650,7 +66656,7 @@ Transform:
   m_GameObject: {fileID: 1985049010}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.44800007, z: 1.734}
+  m_LocalPosition: {x: 0, y: 0.035, z: 1.734}
   m_LocalScale: {x: 0.53154, y: 0.53154, z: 0.53154}
   m_ConstrainProportionsScale: 0
   m_Children: []

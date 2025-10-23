@@ -12498,6 +12498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 8169297490157234413, guid: 58283f570f1c12b4da6624adc72b2cf9, type: 3}
   faultyItem: {fileID: 8169297490157234413, guid: 58283f570f1c12b4da6624adc72b2cf9, type: 3}
+  contrabandItem: {fileID: 8169297490157234413, guid: 58283f570f1c12b4da6624adc72b2cf9, type: 3}
 --- !u!4 &211652955
 Transform:
   m_ObjectHideFlags: 0
@@ -16818,6 +16819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 6041812620353442504, guid: 8a1d04d967e7b4f4ebd8ce063b0b6736, type: 3}
   faultyItem: {fileID: 6041812620353442504, guid: 8a1d04d967e7b4f4ebd8ce063b0b6736, type: 3}
+  contrabandItem: {fileID: 6041812620353442504, guid: 8a1d04d967e7b4f4ebd8ce063b0b6736, type: 3}
 --- !u!4 &296211675
 Transform:
   m_ObjectHideFlags: 0
@@ -32361,7 +32363,7 @@ GameObject:
   - component: {fileID: 580374070}
   - component: {fileID: 580374069}
   m_Layer: 0
-  m_Name: Car2Spawner
+  m_Name: Spawner2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32381,6 +32383,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 7036639497853360615, guid: 8335c87baab03ba46bfb96e36233938f, type: 3}
   faultyItem: {fileID: 4854032960606000934, guid: 221018c9c6ce92644b7ff650167515c8, type: 3}
+  contrabandItem: {fileID: 3044311539227786070, guid: 64b2ca4ef0437a140b9f8326e69de420, type: 3}
 --- !u!4 &580374070
 Transform:
   m_ObjectHideFlags: 0
@@ -41541,6 +41544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 3675897010853768116, guid: 6fa4cf19bdb89eb468c9b6a99d9ac24d, type: 3}
   faultyItem: {fileID: 3675897010853768116, guid: 6fa4cf19bdb89eb468c9b6a99d9ac24d, type: 3}
+  contrabandItem: {fileID: 3675897010853768116, guid: 6fa4cf19bdb89eb468c9b6a99d9ac24d, type: 3}
 --- !u!4 &796031752
 Transform:
   m_ObjectHideFlags: 0
@@ -53318,7 +53322,7 @@ GameObject:
   - component: {fileID: 1002692347}
   - component: {fileID: 1002692346}
   m_Layer: 0
-  m_Name: LlamaSpawner
+  m_Name: Spawner3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53338,6 +53342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 2491855960844049655, guid: ca7aed351fe55774d8fa18c5f714a34b, type: 3}
   faultyItem: {fileID: 680857642500298826, guid: d3d4e6b38d92d9a47b4fe33c3f3d4ebe, type: 3}
+  contrabandItem: {fileID: 6943172293901009296, guid: 49b362814badfa8498abc92208fe54e0, type: 3}
 --- !u!4 &1002692347
 Transform:
   m_ObjectHideFlags: 0
@@ -71038,7 +71043,7 @@ Transform:
   m_GameObject: {fileID: 1329272598}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.44800007, z: 1.734}
+  m_LocalPosition: {x: 0, y: 0.035, z: 1.734}
   m_LocalScale: {x: 0.53154, y: 0.53154, z: 0.53154}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -71058,7 +71063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 1329272599}
   currentItem: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1968745187}
 --- !u!1001 &1329859228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100026,7 +100031,7 @@ GameObject:
   - component: {fileID: 1860925819}
   - component: {fileID: 1860925818}
   m_Layer: 0
-  m_Name: Car1Spawner
+  m_Name: Spawner1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100046,6 +100051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToSpawn: {fileID: 1457854080913671826, guid: bbafc2a263ad96447a80f1d4d9cdb615, type: 3}
   faultyItem: {fileID: 7085683250474822113, guid: dd18b7660627e6040ac6fe36063d9922, type: 3}
+  contrabandItem: {fileID: 1096083466177018521, guid: e193b7afd56e387478879bd8119753db, type: 3}
 --- !u!4 &1860925819
 Transform:
   m_ObjectHideFlags: 0

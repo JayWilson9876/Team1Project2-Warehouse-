@@ -153,5 +153,5 @@ MonoBehaviour:
   pickedUpFirstTime: 0
   canBePickedUp: 0
   targetPosition: {x: -8.402998, y: 0.42000008, z: 3.2850037}
-  spawnerName: LlamaSpawner
+  spawnerName: Spawner3
   spriteName: LVL 3 Lama

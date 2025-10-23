@@ -98,7 +98,7 @@ MonoBehaviour:
   pickedUpFirstTime: 0
   canBePickedUp: 0
   targetPosition: {x: -3.383999, y: 0.62, z: 2.172005}
-  spawnerName: Car2Spawner
+  spawnerName: Spawner2
   spriteName: LVL 3 Car
 --- !u!1001 &6985796774516273373
 PrefabInstance:

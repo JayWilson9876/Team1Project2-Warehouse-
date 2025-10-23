@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
                     interactText.text = "Pick Up";
                     interactText.enabled = true;
                 }
-                else if (hit.collider.CompareTag("Pickup"))
+                else if (hit.collider.CompareTag("Pickup") || hit.collider.CompareTag("Contraband"))
                 {
                     currentItemScript = hit.collider.GetComponent<Item>();
                     if (currentItemScript.canBePickedUp)
@@ -164,6 +164,15 @@ public class Player : MonoBehaviour
                         interactText.text = "Throw Away";
                         interactText.enabled = true;
                     }
+                    else if (hit.collider.CompareTag("Man"))
+                    {
+                        if (objectHolderScript.currentItem.CompareTag("Contraband"))
+                        {
+                            canInteract = true;
+                            interactText.text = "Talk";
+                            interactText.enabled = true;
+                        }
+                    }
                     else
                     {
                         canInteract = true;
@@ -202,11 +211,11 @@ public class Player : MonoBehaviour
                 {
                     if (Physics.Raycast(ray, out hit, 2.5f, ~objectHolderLayer))
                     {
-                        if (hit.collider.CompareTag("Pickup") || hit.collider.CompareTag("Correct Box 1") || hit.collider.CompareTag("Correct Box 2") || hit.collider.CompareTag("Correct Box 3") || hit.collider.CompareTag("Incorrect Box 1") || hit.collider.CompareTag("Incorrect Box 2") || hit.collider.CompareTag("Incorrect Box 3"))
+                        if (hit.collider.CompareTag("Pickup") || hit.collider.CompareTag("Correct Box 1") || hit.collider.CompareTag("Correct Box 2") || hit.collider.CompareTag("Correct Box 3") || hit.collider.CompareTag("Incorrect Box 1") || hit.collider.CompareTag("Incorrect Box 2") || hit.collider.CompareTag("Incorrect Box 3") || hit.collider.CompareTag("Contraband"))
                         {
                             objectHolderScript.PickUpItem(hit.transform.gameObject);
                             holdingObject = true;
-                            if (hit.collider.CompareTag("Pickup"))
+                            if (hit.collider.CompareTag("Pickup") || hit.collider.CompareTag("Contraband"))
                             {
                                 if (!currentItemScript.pickedUpFirstTime)
                                 {
@@ -469,6 +478,15 @@ public class Player : MonoBehaviour
                             }
                             objectHolderScript.DestroyBox();
                             holdingObject = false;
+                        }
+                        else if (hit.collider.CompareTag("Man"))
+                        {
+                            if (objectHolderScript.currentItem.CompareTag("Contraband"))
+                            {
+                                characterScript.ContrabandDialogue();
+                                objectHolderScript.DestroyBox();
+                                holdingObject = false;
+                            }
                         }
                         else
                         {

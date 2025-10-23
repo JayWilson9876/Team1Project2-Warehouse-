@@ -153,5 +153,5 @@ MonoBehaviour:
   pickedUpFirstTime: 0
   canBePickedUp: 0
   targetPosition: {x: -3.383999, y: 0.4229999, z: 2.172005}
-  spawnerName: CatSpawner
+  spawnerName: Spawner2
   spriteName: LVL 1 Cat

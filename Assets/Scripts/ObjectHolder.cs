@@ -15,7 +15,14 @@ public class ObjectHolder : MonoBehaviour
         currentItem.GetComponent<BoxCollider>().enabled = false;
         currentRigidBody.isKinematic = true;
         currentItem.transform.localPosition = Vector3.zero;
-        currentItem.transform.eulerAngles = new Vector3(0, 0, 0);
+        if (item.CompareTag("Contraband"))
+        {
+            currentItem.transform.eulerAngles = new Vector3(-90, 0, 0);
+        }
+        else if (item.CompareTag("Pickup"))
+        {
+            currentItem.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
     }
 
     public void DropItem()

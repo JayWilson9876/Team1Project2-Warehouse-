@@ -24,6 +24,7 @@ TagManager:
   - Waste Bin
   - Floor
   - Man
+  - Contraband
   layers:
   - Default
   - TransparentFX
