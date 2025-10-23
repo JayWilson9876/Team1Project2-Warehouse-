@@ -11,7 +11,14 @@ public class Spawner : MonoBehaviour
         int index = Random.Range(1, 11);
         if (index == 1)
         {
-            Instantiate(contrabandItem, transform.position, Quaternion.Euler(-90, 0, 0));
+            if (gameObject.name == "Box 1 Spawner" || gameObject.name == "Box 2 Spawner" || gameObject.name == "Box 3 Spawner")
+            {
+                Instantiate(faultyItem, transform.position, transform.rotation);
+            }
+            else
+            {
+                Instantiate(contrabandItem, transform.position, Quaternion.Euler(-90, 0, 0));
+            }
         }
         else if (index == 2)
         {
